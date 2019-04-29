@@ -1,0 +1,385 @@
+English,Part_of_Speech,Is_Cognate_EN_PT,Is_Cognate_EN_SP,Is_Cognate_PT_SP,Is_False_Cognate_EN_PT,Is_False_Cognate_EN_SP,Is_False_Cognate_PT_SP,Similar_Word_PT,Similar_Word_SP,Translation_PT,Translation_SP,Comments,Similar_No_Accents_PT,Similar_No_Accents_SP,SOLAR_PT_EN,SOLAR_SP_EN,SOLAR_PT_SP,total_freq,freq_per_million.x,wl,coca_total_freq,coca_freq_per_million,freq,PT_freq_per_million,SP_freq_per_million
+actor,noun,Yes,Yes,yes,No,No,no,ator,actor,ator,actor,NA,ator,actor,0.95,1,0.95,1977,22.030173291995204,5,15931,38.409071428499786,35482,40.73160407818292,38.92857143
+clerk,noun,No,No,no,No,No,no,escriturário,empleado,escriturário,empleado,NA,escriturario,empleado,0.11,0.2,NA,1763,19.645521251283533,5,NA,NA,403,0.46262432905438583,23.57142857
+cereal,noun,Yes,Yes,yes,No,No,no,cereal,cereal,cereal,cereal,NA,cereal,cereal,1,1,1,422,4.702444678412735,6,NA,NA,1641,1.8837879006904397,1.428571429
+pepper,noun,No,No,yes,No,No,no,pimenta,pimienta,pimenta,pimienta,NA,pimenta,pimienta,0.3,0.23,0.91,936,10.430066869654786,6,17848,43.03088989114708,2449,2.8113324611766526,2.142857143
+error,noun,Yes,Yes,yes,No,No,no,erro,error,erro,error,NA,erro,error,0.83,1,0.83,3695,41.17424902069918,5,40,0.0964385699039603,53243,61.120365141048794,56.60714286
+laugh,verb/noun,No,No,yes,No,No,no,risada,risa,risada,risa,NA,risada,risa,0.12,0.17,0.75,3309,36.87296076035009,5,7174,17.29625751227528,1306,1.499224252469052,38.57142857
+piano,noun,Yes,Yes,yes,No,No,no,piano,piano,piano,piano,NA,piano,piano,1,1,1,1819,20.269542346049203,5,5,0.012054821237995037,8047,9.23756321563435,33.57142857
+bench,noun,no,No,yes,No,No,no,banco,banco,banco,banco,NA,banco,banco,0.57,0.57,1,1872,20.86013373930957,5,5,0.012054821237995037,87072,99.95440590427663,46.96428571
+origin,noun,Yes,Yes,yes,No,No,no,origem,origen,origem,origen,NA,origem,origen,0.62,0.88,0.75,2861,31.880792002224727,6,8449,20.370236927964015,119220,136.8587407192652,102.1428571
+safety,noun,no,no,no,no,no,no,segurança,seguridad,segurança,seguridad,NA,seguranca,seguridad,NA,NA,0.61,7913,88.17640933715633,6,35933,86.63317830897513,126176,144.84388918800542,118.5714286
+security,noun,yes,yes,yes,no,no,no,segurança,seguridad,segurança,seguridad,NA,seguranca,seguridad,0.45,0.55,0.61,13330,148.53930702189987,8,68636,165.47894209820547,126176,144.84388918800542,118.5714286
+dentist,noun,Yes,Yes,yes,No,No,no,dentista,dentista,dentista,dentista,NA,dentista,dentista,0.8,0.8,1,431,4.802733782928646,7,2571,6.198589080577048,4370,5.0165466947088495,3.392857143
+surgeon,noun,no,no,no,No,No,No,cirurgião,cirujano,cirurgião,cirujano,NA,cirurgiao,cirujano,0.34,0.26,0.64,988,11.009515029080053,7,NA,NA,5830,6.6925554302408665,8.214285714
+accident,noun,Yes,Yes,yes,No,No,no,acidente,accidente,acidente,accidente,NA,acidente,accidente,0.77,0.82,0.97,5954,66.34681425419295,8,16871,40.675377821242854,39655,45.52200438871382,34.82142857
+basement,noun,no,no,yes,no,no,no,sótão,sótano,sótão,sótano,NA,sotao,sotano,NA,NA,0.96,793,8.836584431235304,8,7810,18.82963077374825,587,0.6738473477789689,11.07142857
+destruction,noun,Yes,Yes,yes,No,No,no,destruição,destrucción,destruição,destrucción,NA,destruicao,destruccion,0.75,0.92,0.77,2302,25.651724288403113,11,12731,30.69398583618296,20462,23.489377223600105,29.28571429
+improvement,noun,No,No,yes,No,No,no,melhoria,mejora,melhoria,mejora,NA,melhoria,mejora,0.2,0.29,0.62,4011,44.69551091259118,11,12329,29.724778208648164,54016,62.00773140992979,17.32142857
+fruit,noun,Yes,Yes,yes,No,No,no,fruta,fruta,fruta,fruta,NA,fruta,fruta,0.68,0.68,1,3796,42.29971563804441,5,16796,40.49455550267293,5568,6.3917922187960805,12.67857143
+candy,noun,No,No,no,No,No,yes,bala,caramelo,bala,caramelo,NA,bala,caramelo,0.17,0.3,0.33,355,3.9558480114609496,5,8440,20.348538249735622,5797,6.654673041013088,2.857142857
+desert,noun,Yes,Yes,yes,No,No,no,deserto,desierto,deserto,Desierto,NA,deserto,desierto,0.78,0.62,0.91,2093,23.322788416866953,6,15274,36.825067917827234,5597,6.425082803268976,29.10714286
+jungle,noun,No,Yes,no,No,No,no,selva,jungla,selva,jungla,selva also exists in Spanish,selva,jungla,0.18,0.75,NA,937,10.441210103489887,6,16,0.03857542796158411,3461,3.9730590641618595,6.25
+discount,noun,Yes,Yes,yes,No,No,no,desconto,descuento,desconto,descuento,NA,desconto,descuento,0.65,0.61,0.82,1897,21.138714585187103,8,NA,NA,11904,13.665210950529552,2.5
+salesman,noun,Yes,Yes,yes,No,No,no,vendedor,vendedor,vendedor,vendedor,NA,vendedor,vendedor,0.11,0.11,1,417,4.646728509237228,8,NA,NA,5768,6.621382456540193,8.928571429
+suggestion,noun,Yes,Yes,Maybe,No,No,no,sugestão,sugerencia,sugestão,sugerencia,NA,sugestao,sugerencia,0.75,0.46,0.51,2792,31.111908867602736,10,5,0.012054821237995037,15051,17.277813341433156,6.25
+assumption,noun,Yes,Yes,yes,No,No,no,suposição,suposición,suposição,suposición,NA,suposicao,suposicion,0.36,0.44,0.82,2989,33.30712593311769,10,7528,18.149738855925328,5003,5.743199797168964,5
+instruction,noun,Yes,Yes,yes,No,No,no,instrução,instrucción,instrução,instrucción,NA,instrucao,instruccion,0.79,0.92,0.79,2228,24.82712498460562,11,16751,40.386062111530975,23027,26.433872022668343,10.71428571
+measurement,noun,yes,yes,yes,no,no,no,medição,medición,medição,medición,NA,medicao,medicion,0.34,0.33,0.78,1625,18.107754982039555,11,6,0.014465785485594044,21920,25.163090056754683,6.428571429
+inspector,noun,yes,yes,yes,no,no,no,inspetor,inspector,inspetor,inspector,NA,inspetor,inspector,0.92,1,0.92,2715,30.25387986229994,9,NA,NA,3102,3.5609445874111785,26.60714286
+physician,noun,no,no,yes,yes,yes,no,médico,médico,médico,médico,NA,medico,medico,0.25,0.25,1,516,5.749908658912253,9,4,0.00964385699039603,82611,94.83339565139423,93.21428571
+tractor,noun,yes,yes,yes,no,no,no,trator,tractor,trator,tractor,NA,trator,tractor,0.9,1,0.9,456,5.081314628806179,7,9,0.021698678228391065,3210,3.684923315792999,3.928571429
+nursery,noun,no,no,no,no,no,no,berçário,guardería,berçário,guardería,NA,bercario,guarderia,NA,NA,NA,1548,17.249725976736762,7,NA,NA,1703,1.9549608743911142,2.321428571
+insect,noun,yes,yes,yes,no,no,no,inseto,insecto,inseto,insecto,NA,inseto,insecto,0.72,0.78,0.93,746,8.312852440985544,6,4,0.00964385699039603,4746,5.4481763416677795,5.535714286
+potato,noun,maybe,maybe,yes,no,no,no,batata,patata,batata,patata,NA,batata,patata,0.28,0.53,0.75,718,8.00084189360271,6,6,0.014465785485594044,8222,9.438454673660448,5.892857143
+talent,noun,yes,yes,yes,no,no,no,talento,talento,talento,talento,NA,talento,talento,0.78,0.78,1,2048,22.821342894287394,6,14208,34.254980029886696,10754,12.345067083500908,28.75
+weapon,noun,no,no,yes,no,no,no,arma,arma,arma,arma,Note that English also has arms which is a cognate,arma,arma,NA,NA,1,1889,21.049568714506293,6,NA,NA,21924,25.167681861509564,34.82142857
+academy,noun,yes,yes,yes,no,no,no,academia,academia,academia,academia,NA,academia,academia,0.7,0.7,1,1372,15.288516821758938,7,NA,NA,8754,10.049164706059786,11.07142857
+lecture,noun,yes,yes,yes,yes,yes,no,leitura,lectura,palestra,conferencia,NA,leitura,lectura,0.67,0.78,0.89,1596,17.784601200821623,7,159,0.3833433153682421,118548,136.08731752044497,56.25
+fantasy,noun,yes,yes,yes,no,no,no,fantasia,fantasía,fantasia,fantasía,Note extra meaning of costume in Portuguese which doesn't exist in Spanish or English,fantasia,fantasia,0.7,0.7,1,1284,14.307912244270026,7,7976,19.229850838849682,10206,11.71598983208204,25.71428571
+holiday,noun,no,no,no,no,no,no,feriado,vacaciones,feriado,vacaciones,NA,feriado,vacaciones,NA,NA,NA,6764,75.37283366062498,7,14323,34.532240918360586,6864,7.879536959377927,37.14285714
+camera,noun,yes,yes,yes,no,no,no,câmera,cámara,câmera,cámara,NA,camera,camara,1,0.78,0.78,2452,27.323209363668305,6,36439,87.85312621826023,10138,11.637929151249041,39.82142857
+ladder,noun,no,no,yes,no,no,no,escada,escalera,escada,escalera,NA,escada,escalera,NA,NA,0.78,1176,13.10444299007909,6,NA,NA,4989,5.727128480526876,38.21428571
+author,noun,yes,yes,yes,no,no,no,autor,autor,autor,autor,NA,autor,autor,0.92,0.92,1,4295,47.86018932175994,6,48038,115.81790052616113,179658,206.23861466315844,82.85714286
+reader,noun,no,no,yes,no,no,no,leitor,lector,leitor,lector,NA,leitor,lector,NA,NA,0.88,4036,44.97409175846872,6,15358,37.027588914625554,54472,62.53119715198636,46.42857143
+tourist,noun,yes,yes,yes,no,no,no,turista,turista,turista,turista,NA,turista,turista,0.75,0.75,1,1936,21.57330070475605,7,NA,NA,6917,7.940378372380116,5.178571429
+emperor,noun,yes,yes,yes,no,no,no,imperador,emperador,imperador,emperador,NA,imperador,emperador,0.51,0.69,0.82,2116,23.57908279507428,7,2837,6.839905570438384,6746,7.744078719108901,16.96428571
+restaurant,noun,yes,yes,yes,no,no,no,restaurante,restaurante,restaurante,restaurante,NA,restaurante,restaurante,0.85,0.85,1,3364,37.48583862128066,10,25672,61.89427416436172,17665,20.2785577487487,25.71428571
+entrepreneur,noun,yes,yes,yes,no,no,no,empreendedor,emprendedor,empreendedor,emprendedor,NA,empreendedor,emprendedor,0.52,0.59,0.8,283,3.1535351753336585,12,2515,6.063575082711504,8244,9.4637095998123,1.785714286
+guitar,noun,no,yes,no,yes,yes,yes,violão,guitarra,violão,guitarra,NA,violao,guitarra,0.22,0.7,0.22,2653,29.56299936452366,6,NA,NA,4691,5.3850390262881485,12.85714286
+mirror,noun,no,no,yes,no,no,no,espelho,espejo,espelho,espejo,NA,espelho,espejo,NA,NA,0.75,3705,41.285681359050194,6,17096,41.21784477695263,11059,12.695192196060678,65.71428571
+corn,noun,no,no,no,no,no,no,milho,naiz,milho,maíz,NA,milho,naiz,NA,NA,NA,1062,11.834114332877544,4,14344,34.58287116756016,55854,64.11766569479818,NA
+meat,noun,no,no,no,no,no,no,carne,carne,carne,carne,NA,carne,carne,NA,NA,NA,3177,35.402053894116726,4,19516,47.05237825614223,40801,46.837556450987584,86.07142857
+fish,noun,no,no,no,no,no,no,peixe,pez,peixe,pez,NA,peixe,pez,NA,NA,NA,10145,113.04810725710234,4,43087,103.88121653629844,11378,13.061388625262536,15.53571429
+bird,noun,no,no,yes,no,no,no,pássaro,pájaro,pássaro,pájaro,NA,passaro,pajaro,NA,NA,0.72,3706,41.29682459288529,4,19428,46.84021340235351,2363,2.7126086589466842,20.71428571
+butter,noun,no,no,yes,no,no,no,manteiga,mantequilla,manteiga,mantequilla,NA,manteiga,mantequilla,NA,NA,0.73,1866,20.793274336298964,6,15629,37.68096022572488,3618,4.153287400790988,6.25
+candle,noun,no,no,yes,no,no,no,vela,vela,vela,vela,NA,vela,vela,NA,NA,1,773,8.61371975453328,6,25,0.06027410618997518,3235,3.713622095511013,14.82142857
+beer,noun,no,no,yes,no,no,no,cerveja,cerveza,cerveja,cerveza,NA,cerveja,cerveza,NA,NA,0.89,3112,34.677743694835144,4,17803,42.92239650000513,8325,9.556693646098665,26.78571429
+meal,noun,no,no,no,no,no,no,refeição,comida,refeição,comida,NA,refeicao,comida,NA,NA,NA,3833,42.71201528994315,4,13286,32.032070993600406,5480,6.290772514188671,61.25
+knee,noun,no,no,no,no,no,no,joelho,rodilla,joelho,rodilla,NA,joelho,rodilla,NA,NA,NA,1888,21.038425480671194,4,12221,29.46439406990747,8747,10.041129047738742,9.285714286
+bone,noun,no,no,no,no,no,no,osso,hueso,osso,hueso,NA,osso,hueso,NA,NA,NA,2267,25.261711104174573,4,14236,34.32248702881947,12846,14.746580970304318,15.17857143
+finger,noun,no,no,no,yes,yes,no,fingir,fingir,dedo,dedo,NA,fingir,fingir,0.88,0.88,NA,2946,32.827966878208336,6,16648,40.137732794028274,1383,1.587616494000535,7.857142857
+tongue,noun,no,no,yes,no,no,no,língua,lengua,língua,lengua,NA,lingua,lengua,NA,NA,0.88,2349,26.175456278652874,6,81,0.1952881040555196,91067,104.54047090321528,101.7857143
+magazine,noun,no,no,yes,no,no,no,revista,revista,revista,revista,NA,revista,revista,NA,NA,1,4456,49.65424996921124,8,32506,78.37080383245333,63846,73.2920915950529,64.82142857
+workshop,noun,no,no,no,no,no,no,oficina,taller,oficina,taller,but oficina also exists in SP,oficina,taller,NA,NA,NA,1727,19.24436483321989,8,6,0.014465785485594044,8649,9.928629831244127,17.32142857
+neighbor,noun,no,no,yes,no,no,no,vizinho,vecino,vizinho,vecino,NA,vizinho,vecino,NA,NA,0.64,11,0.12257557218611394,8,115,0.27726088847388586,9584,11.001964192697852,33.03571429
+employee,noun,no,no,yes,no,no,no,empregado,empleado,empregado,empleado,NA,empregado,empleado,NA,NA,0.74,2949,32.861396579713634,8,12136,29.259462108861552,24510,28.136283635540938,23.57142857
+affair,noun,no,no,no,no,no,no,caso,asunto,caso,asunto,NA,caso,asunto,NA,NA,NA,3212,35.79206707834527,6,13,0.0313425352187871,481338,552.5525292763771,111.7857143
+injury,noun,no,no,no,no,no,no,injúria,injuria,ferida,herida,NA,injuria,injuria,NA,NA,NA,4474,49.854828178243075,6,14187,34.20434978068712,3026,3.4737002970684157,1.071428571
+ending,noun,no,no,yes,no,no,yes,final,finalizando,final,finalizando,NA,final,finalizando,NA,NA,0.86,2279,25.395429910195787,6,NA,NA,314049,360.5129228665033,NA
+screen,noun,no,no,no,no,no,no,tela,pantalla,tela,pantalla,NA,tela,pantalla,NA,NA,NA,4749,52.91921748289592,6,27651,66.66557241036016,28610,32.842883509295234,44.28571429
+engagement,noun,no,no,no,no,no,no,noivado,compromiso,noivado,compromiso,NA,noivado,compromiso,NA,NA,NA,1191,13.271591497605609,10,7399,17.838724467985056,714,0.8196371487464801,32.67857143
+commitment,noun,no,no,yes,no,no,yes,comprometimento,compromiso,compromisso,compromiso,NA,comprometimento,compromiso,NA,NA,0.55,5374,59.88373862983421,10,20223,48.75692997919472,22950,26.34547978113686,32.67857143
+carpet,noun,Yes,No,No,No,Yes,No,carpete,carpeta,carpete,alfombra,NA,carpete,carpeta,0.78,0.78,0.78,2090,23.289358715361644,6,87,0.20975388954111363,958,1.099737238794297,6.785714286
+bomb,noun,No,No,Yes,Yes,Yes,no,bomba,bomba,bomba,bomba,NA,bomba,bomba,0.71,0.71,1,2835,31.591067922512096,4,12198,29.40894189221269,15243,17.498219969667502,26.25
+salsa,noun,No,Yes,No,Yes,No,Yes,salsa,salsa,molho,salsa,The dance meaning is the same in all three languages,salsa,salsa,1,1,1,15,0.167148507526519,5,36,0.08679471291356426,1082,1.2420831861956463,7.321428571
+actual,adjective,No,No,Yes,Yes,Yes,no,atual,actual,real,real,NA,atual,actual,0.96,1,0.96,5690,63.40500052172621,6,22302,53.76932464995306,152274,174.80311931123464,129.1071429
+alms,noun,No,No,No,Yes,Yes,No,almas,almas,esmola,limosna,NA,almas,almas,0.82,0.82,1,84,0.9360316421485064,4,256,0.6172068473853459,6100,7.002502251195418,NA
+avocado,noun,No,No,Yes,No,No,No,abacate ,aguacate ,abacate,aguacate,NA,abacate ,aguacate ,0.36,0.35,NA,88,0.9806045774889115,7,NA,NA,NA,NA,NA
+balcony,noun,No,Yes,No,Yes,No,Yes,balcão,balcón,sacada,balcón,NA,balcao,balcon,0.72,0.88,0.72,911,10.151486023777254,7,NA,NA,3955,4.540146951389816,26.60714286
+beef,noun,No,No,yes,Yes,Yes,no,bife,carne,bife,carne,NA,bife,carne,0.58,0.14,0.33,1334,14.86507393602509,4,8852,21.34185551974641,726,0.8334125630111268,86.07142857
+brand,noun,No,No,yes,Yes,No,no,brando,blando,marca,marca,NA,brando,blando,0.75,0.62,0.88,1517,16.90428572784862,5,203,0.4894257422625985,809,0.9286925116749334,7.321428571
+bland,adjective,No,No,yes,No,Yes,no,brando,blando,brando,blando,NA,brando,blando,0.62,0.75,0.88,616,6.86423204242238,5,345,0.8317826654216576,809,0.9286925116749334,7.321428571
+candor,noun,Yes,Yes,Yes,No,No,No,candor,candor,candor,candor,NA,candor,candor,1,1,1,1,0.011143233835101267,6,16,0.03857542796158412,15,0.017219267830808405,1.607142857
+cargo,noun,No,No,Yes,Yes,Yes,No,cargo,cargo,carga,carga,NA,cargo,cargo,1,1,1,846,9.427175824495672,5,NA,NA,64074,73.55382446608118,59.46428571
+commodity,noun,No,No,Yes,Yes,Yes,No,comodidade,comodidad,mercadoria,mercancía,NA,comodidade,comodidad,0.51,0.56,0.83,902,10.051196919261342,9,5,0.012054821237995037,1640,1.882639949501719,7.857142857
+comprehensive,adjective,No,No,no,Yes,Yes,no,compreensivo,comprensivo,abrangente,completo,NA,compreensivo,comprensivo,0.76,0.62,NA,3502,39.02360489052464,13,12182,29.37036646425111,866,0.9941257294320052,NA
+construe,verb,No,No,Yes,Yes,Yes,No,construir,construir,interpretar,interpretar,NA,construir,construir,0.73,0.73,1,109,1.214612488026038,8,191,0.4604941712914104,50701,58.202273219321135,38.03571429
+doze,noun,No,No,No,Yes,Yes,Yes,doce/doze,doce,cochilar,dormitar,NA,doce/doze,doce,0.55,0.83,0.55,71,0.79116960229219,4,269,0.648549382604133,NA,NA,65.53571429
+invite,verb,No,Yes,No,No,No,No,convidar,invitar,convidar,invitar,NA,convidar,invitar,0.3,0.67,0.6,1047,11.666965825351026,6,112,0.2700279957310888,3097,3.5552048314675755,3.571428571
+exit,noun,No,No,Yes,Yes,Yes,No,êxito,éxito,saída,salida,NA,exito,exito,0.71,0.71,1,1184,13.193588860759899,4,NA,NA,19115,21.943086972393512,103.0357143
+fabric,noun,No,No,Yes,Yes,Yes,No,fábrica,fábrica,fábrica,fábrica,NA,fabrica,fabrica,0.78,0.78,1,2049,22.832486128122497,6,8504,20.50283996158196,30913,35.48661509691868,27.67857143
+file,noun,No,No,yes,Yes,Yes,no,fila,fila,arquivo,archivo,NA,fila,fila,0.67,0.67,1,5520,61.51065076975899,4,11643,28.070856734795242,11850,13.60322158633864,18.21428571
+grip,noun,No,No,yes,Yes,Yes,no,gripe,gripe,aperto,agarre,NA,gripe,gripe,0.71,0.71,1,1866,20.793274336298964,4,433,1.0439475192103702,4476,5.138229520713229,7.321428571
+excited,adjective,No,No,no,Yes,Yes,no,excitado,excitado,animado,emocionado,NA,excitado,excitado,0.7,0.7,NA,1762,19.634378017448434,7,3220,7.763304877268804,1450,1.6645292236448126,NA
+devil,noun,No,No,Yes,Yes,No,No,débil,débil,diabo,diablo,NA,debil,debil,0.86,0.86,1,1579,17.5951662256249,5,22,0.053041213447178166,1252,1.4372348882781416,32.5
+intent,noun,No,No,yes,Yes,Yes,no,intenção,intención,intenção,inención,NA,intencao,intencion,0.6,0.55,0.8,1852,20.637269062607544,6,2462,5.935793977588756,49958,57.34934548610176,53.39285714
+air,noun,yes,yes,yes,no,no,no,ar,aire,ar,aire,NA,ar,aire,0.93,0.67,0.68,18169,202.46141554995492,3,109551,264.1235442887189,86687,99.51244469661921,209.6428571
+adult,noun,yes,yes,yes,no,no,no,adulto,adulto,adulto,adulto,NA,adulto,adulto,0.75,0.75,1,4920,54.824710468698235,5,21917,52.84110341462744,20032,22.995758212450266,17.67857143
+agenda,noun,yes,yes,yes,no,no,no,agenda,agenda,agenda,agenda,NA,agenda,agenda,1,1,1,1934,21.55101423708585,6,15462,37.27832919637585,22260,25.553393460919676,8.75
+agent,noun,yes,yes,yes,no,no,no,agente,agente,agente,agente,NA,agente,agente,0.75,0.75,1,4154,46.28899335101066,5,21661,52.2238965672421,48176,55.30369646780172,27.14285714
+alarm,noun,yes,yes,yes,no,no,no,alarme,alarma,alarme,alarma,NA,alarme,alarma,0.75,0.75,0.75,2145,23.902236576292218,5,682,1.644277616862523,2659,3.0524022108079705,21.60714286
+alcohol,noun,yes,yes,yes,no,no,no,álcool,alcohol,álcool,alcohol,NA,alcool,alcohol,0.93,1,0.93,2883,32.12594314659695,7,16872,40.67778878549045,36281,41.64881707797065,51.42857143
+altar,noun,yes,yes,yes,no,no,no,altar,altar,altar,altar,NA,altar,altar,1,1,1,887,9.884048411734824,5,9,0.021698678228391065,3698,4.245123495888632,17.14285714
+area,noun,yes,yes,yes,no,no,no,área,área,área,área,NA,area,area,1,1,1,31447,350.4212744124295,4,109556,264.13559910995684,464846,533.6205182719976,34.82142857
+artist,noun,yes,yes,yes,no,no,no,artista,artista,artista,artista,NA,artista,artista,0.78,0.78,1,3959,44.11606275316591,6,30277,72.99676452455515,36154,41.503027277003135,34.82142857
+atmosphere,noun,yes,yes,yes,no,no,no,atmosfera,atmósfera,atmosfera,atmósfera,NA,atmosfera,atmosfera,0.68,0.68,1,4668,52.01661554225271,10,15548,37.48567212166937,17853,20.494372572228166,33.39285714
+attention,noun,yes,yes,yes,no,no,no,atenção,atención,atenção,atención,NA,atencao,atencion,0.64,0.87,0.78,13158,146.62267080226246,9,67697,163.21504666971,136656,156.87441764579688,132.3214286
+banana,noun,yes,yes,yes,no,no,no,banana,banana,banana,banana,NA,banana,banana,1,1,1,433,4.825020250598848,6,NA,NA,6980,8.012699297269512,0.892857143
+base,noun,yes,yes,yes,no,no,no,base,base,base,base,NA,base,base,1,1,1,8672,96.63412381799819,4,37558,90.55099521132352,271410,311.5654321306473,90
+blouse,noun,yes,yes,yes,no,no,no,blusa,blusa,blusa,blusa,NA,blusa,blusa,0.64,0.64,1,502,5.593903385220836,6,2841,6.84954942742878,1212,1.391316840729319,10.89285714
+cabin,noun,yes,yes,yes,no,no,no,cabine,cabina,cabine,cabina,NA,cabine,cabina,0.75,0.75,0.75,1086,12.101551944919976,5,8911,21.484102410354755,3130,3.593087220695354,13.92857143
+cable,noun,yes,yes,yes,no,no,no,cabo,cable,cabo,cable,NA,cabo,cable,0.67,1,0.67,1836,20.458977321245925,5,16815,40.540363823377305,20177,23.162211134814747,13.92857143
+cafe,noun,yes,yes,yes,no,no,no,café,café,café,café,NA,cafe,cafe,1,1,1,645,7.187385823640317,4,67,0.1615346045891335,49280,56.57103458014922,77.5
+cafeteria,noun,yes,yes,yes,no,no,no,cafeteria,cafetería,cafeteria,cafetería,NA,cafeteria,cafeteria,1,1,1,128,1.4263339308929621,9,2562,6.176890402348657,264,0.30305911382222794,10.53571429
+canal,noun,yes,yes,yes,no,no,no,canal,canal,canal,canal,NA,canal,canal,1,1,1,2121,23.63479896424979,5,47,0.11331531963715334,39108,44.894075088483675,31.07142857
+cancer,noun,yes,yes,yes,no,no,no,câncer,cáncer,câncer,cáncer,NA,cancer,cancer,1,1,1,4023,44.8292297186124,6,39071,94.19878411794082,39069,44.84930499212357,68.75
+capital,noun,yes,yes,yes,no,no,no,capital,capital,capital,capital,NA,capital,capital,1,1,1,13054,145.46377448341192,7,38155,91.99034086714012,161054,184.88213074820112,85.53571429
+carbon,noun,yes,yes,yes,no,no,no,carbono,carbón,carbono,carbón,NA,carbono,carbon,0.78,1,0.78,2219,24.726835880089713,6,11671,28.138363733728013,20187,23.173690646701953,17.5
+center,noun,yes,yes,yes,no,no,no,centro,centro,centro,centro,NA,centro,centro,0.72,0.72,1,509,5.671906022066545,6,249,0.6003300976521528,106892,122.70679846471813,153.2142857
+cheque,noun,yes,yes,yes,no,no,no,cheque,cheque,cheque,cheque,NA,cheque,cheque,1,1,1,1663,18.531197867773407,6,61,0.14706881910353944,9044,10.382070550788749,4.107142857
+chocolate,noun,yes,yes,yes,no,no,no,chocolate,chocolate,chocolate,chocolate,NA,chocolate,chocolate,1,1,1,1612,17.962892942183245,9,12516,30.175628522949175,4669,5.359784100136296,14.82142857
+class,noun,yes,yes,yes,no,no,no,classe,clase,classe,clase,NA,classe,clase,0.75,0.71,0.84,17018,189.63555340575337,5,70634,170.29604866490828,118899,136.4902483876859,154.8214286
+club,noun,yes,yes,yes,no,no,no,clube,club,clube,club,NA,clube,club,0.71,1,0.71,15535,173.11013762829816,4,24751,59.67377609232303,55313,63.49662410170036,66.96428571
+coast,noun,yes,yes,yes,no,no,no,costa,costa,costa,costa,NA,costa,costa,0.68,0.68,1,4475,49.865971412078174,5,16746,40.37400729029297,12908,14.817753944004993,49.28571429
+color,noun,yes,yes,yes,no,no,no,cor,color,cor,color,NA,cor,color,0.86,1,0.86,116,1.292615124871747,5,43245,104.26214888741907,51912,59.592442108861725,128.75
+combustion,noun,yes,yes,yes,no,no,no,combustão,combustión,combustão,combustión,NA,combustao,combustion,0.82,1,0.82,318,3.5435483595622026,10,1658,3.997378722519154,4220,4.844354016400765,5.357142857
+company,noun,yes,yes,yes,no,no,no,companhia,compañía,companhia,compañía,NA,companhia,compania,0.64,0.7,0.86,38477,428.7582082731915,7,136971,330.23218395788365,32308,37.08800700518386,81.07142857
+concert,noun,yes,yes,yes,no,no,no,concerto,concierto,concerto,concierto,NA,concerto,concierto,0.8,0.65,0.89,1725,19.222078365549688,7,NA,NA,5564,6.387200414041198,12.5
+conclusion,noun,yes,yes,yes,no,no,no,conclusão,conclusión,conclusão,conclusión,NA,conclusao,conclusion,0.82,1,0.82,4846,54.000111164900744,10,16037,38.66463363874528,47753,54.818113114972924,42.14285714
+conductor,noun,yes,yes,yes,no,no,no,condutor,conductor,condutor,conductor,NA,condutor,conductor,0.92,1,0.92,575,6.4073594551832285,9,NA,NA,6395,7.341147851867984,21.78571429
+confusion,noun,yes,yes,yes,no,no,no,confusão,confusión,confusão,confusión,NA,confusao,confusion,0.8,1,0.8,2762,30.7776118525497,9,8884,21.419006375669582,18104,20.782508320597024,28.39285714
+construction,noun,yes,yes,yes,no,no,no,construção,construcción,construção,construcción,NA,construcao,construccion,0.81,0.93,0.81,6181,68.87632833476094,12,27335,65.90370770811887,206942,237.55931489621022,61.60714286
+continent,noun,yes,yes,yes,no,no,no,continente,continente,continente,continente,NA,continente,continente,0.83,0.83,1,1505,16.770566921827406,9,39,0.09402760565636128,17234,19.783790786410137,22.14285714
+control,noun,yes,yes,yes,no,no,no,controle ,control,controle,control ,NA,controle ,control,0.8,1,NA,27960,311.5648180294314,7,16108,38.83581210032481,NA,NA,88.21428571
+crisis,noun,yes,yes,yes,no,no,no,crise,crisis,crise ,crisis,NA,crise,crisis,0.71,1,0.71,5708,63.60557873075803,6,31545,76.05386719051069,119677,137.3833544125105,137.1428571
+culture,noun,yes,yes,yes,no,no,no,cultura,cultura,cultura,cultura,NA,cultura,cultura,0.78,0.78,1,8410,93.71459655320166,7,57736,139.1994317993763,214336,246.04726598561007,145.7142857
+debate,noun,yes,yes,yes,no,no,no,debate,debate,debate,debate,NA,debate,debate,1,1,1,6706,74.7265260981891,6,33398,80.52138394131164,74874,85.95169730426325,38.21428571
+decision,noun,yes,yes,yes,no,no,no,decisão,decisión,decisão,decisión ,NA,decisao,decision,0.78,1,0.78,15787,175.91823255474372,8,57132,137.74320939382648,144920,166.3610862693836,91.42857143
+dimension,noun,yes,yes,yes,no,no,no,dimensão,dimensión,dimensão,dimensión ,NA,dimensao,dimension,0.8,1,0.8,1551,17.283155678242064,9,NA,NA,59713,68.54760933207082,25.35714286
+direction,noun,yes,yes,yes,no,no,no,direção,dirección,direção,dirección ,NA,direcao,direccion,0.75,0.91,0.75,8284,92.31054908997889,9,31655,76.31907325774658,115783,132.91323248363264,79.82142857
+director,noun,yes,yes,yes,no,no,no,diretor,director,diretor,director,NA,diretor,director,0.91,1,0.91,11745,130.87728139326435,8,55,0.1326030336179454,107682,123.6136799038074,133.2142857
+disaster,noun,yes,yes,yes,no,no,no,desastre ,desastre,desastre,desastre,NA,desastre ,desastre,0.75,0.75,NA,2660,29.641002001369372,8,12866,31.019466009608827,NA,NA,19.10714286
+disco,noun,yes,yes,yes,no,no,no,disco,disco,disco,disco,"There is also disk, which shares the other meanings of disco in Spanish and Portuguese",disco,disco,1,1,1,674,7.510539604858254,5,1255,3.0257601307367543,43198,49.589195450350765,22.5
+distance,noun,yes,yes,yes,no,no,no,distância,distancia,distância ,distancia ,NA,distancia,distancia,0.73,0.73,1,6443,71.79585559955747,8,29399,70.87993791516323,68699,78.86309871391377,70.71428571
+division,noun,yes,yes,yes,no,no,no,divisão,división,divisão,división,NA,divisao,division,0.78,1,0.78,8507,94.79549023520647,8,16525,39.841184191573596,50949,58.486965114123834,31.25
+doctor,noun,yes,yes,yes,no,no,no,doutor,doctor,doutor,doctor,NA,doutor,doctor,0.88,1,0.88,9391,104.646108945436,6,40068,96.60251547279702,11362,13.043021406243007,90.35714286
+dragon,noun,yes,yes,yes,no,no,no,dragão,dragón,dragão,dragón ,NA,dragao,dragon,0.72,1,0.72,876,9.76147283954871,6,NA,NA,1607,1.8447575602739406,3.571428571
+drama,noun,yes,yes,yes,no,no,no ,drama,drama,drama,drama ,NA,drama,drama,1,1,1,3450,38.44415673109937,5,11715,28.24444616062237,10842,12.446086788108316,24.82142857
+editorial,noun,yes,yes,yes,no,no,no,editorial,editorial,editorial,editorial ,NA,editorial,editorial,1,1,1,1104,12.302130153951797,9,NA,NA,15707,18.030869321233844,25.53571429
+elephant,noun,yes,yes,yes,no,no,no,elefante,elefante,elefante,elefante ,NA,elefante,elefante,0.62,0.62,1,830,9.248884083134051,8,NA,NA,2421,2.779189827892477,7.321428571
+enigma,noun,yes,yes,yes,no,no,no,enigma,enigma,enigma,enigma,NA,enigma,enigma,1,1,1,224,2.4960843790626837,6,670,1.615346045891335,2412,2.7688582671939916,10.17857143
+excursion,noun,yes,yes,yes,no,no,no,excursão,excursión,excursão,excursión,NA,excursao,excursion,0.8,1,0.8,393,4.379290897194798,9,1103,2.6592935651017053,2911,3.3416859103655514,8.75
+explosion,noun,yes,yes,yes,no,no,no,explosão ,explosión,explosão,explosión ,NA,explosao ,explosion,0.8,1,NA,1635,18.21918732039057,9,8171,19.699988867131488,NA,NA,23.75
+expulsion,noun,yes,yes,yes,no,no,no,expulsão,expulsión,expulsão,expulsión ,NA,expulsao,expulsion,0.8,1,0.8,390,4.345861195689493,9,1094,2.637594886873314,8585,9.85516095516601,10
+extension,noun,yes,yes,yes,no,no,no,extensão,extensión,extensão,extensión ,NA,extensao,extension,0.8,1,0.8,3314,36.9286769295256,9,8683,20.934402561902182,62050,71.23037126011077,22.85714286
+exterior,noun,yes,yes,yes,no,no,no,exterior,exterior,exterior,exterior,NA,exterior,exterior,1,1,1,667,7.432536968012545,8,1728,4.166146219851084,56694,65.08194469332345,84.10714286
+factor,noun,yes,yes,yes,no,no,no,fator,factor,fator ,factor,NA,fator,factor,0.92,1,0.92,5987,66.71454097075129,6,27516,66.34009223693428,102820,118.03234122424801,36.78571429
+family,noun,yes,yes,yes,no,no,no,família,familia,família,familia ,NA,familia,familia,0.67,0.67,1,32718,364.5843246168433,6,200973,484.5387177327153,205034,235.36902402813138,210
+festival,noun,yes,yes,yes,no,no,no,festival,festival,festival,festival ,NA,festival,festival,1,1,1,2930,32.64967513684671,8,NA,NA,16689,19.158157388557434,4.821428571
+final,adjective,yes,yes,yes,no,no,no,final,final,final,final,NA,final,final,1,1,1,14986,166.99250225282756,5,45388,109.42884527002376,314049,360.5129228665033,245.3571429
+formula,noun,yes,yes,yes,no,no,no,fórmula,formula,fórmula,formula,NA,formula,formula,1,1,1,2451,27.3120661298332,7,7449,17.959272680365007,23615,27.108867321636033,4.821428571
+funeral,noun,yes,yes,yes,no,no,no,funeral,funeral,funeral,funeral ,NA,funeral,funeral,1,1,1,2015,22.45361617772905,7,14,0.0337534994663861,1975,2.267203597723107,5
+galaxy,noun,yes,yes,yes,no,no,no,galáxia,galaxia,galáxia,galaxia,NA,galaxia,galaxia,0.67,0.67,1,592,6.5967944303799495,6,9,0.021698678228391065,1257,1.4429746442217444,8.928571429
+general,noun/adjective,yes,yes,yes,no,no,no,general,general,general,general,NA,general,general,1,1,1,32676,364.116308795769,7,71226,171.72333949948688,33693,38.677919401561844,277.1428571
+genesis,noun,yes,yes,yes,no,no,no,gênese,génesis,gênese,génesis,NA,genese,genesis,0.75,1,0.75,564,6.2847838829971145,7,NA,NA,7731,8.874810639998653,7.142857143
+multiple,adjective,yes,yes,yes,no,no,no,múltiplo,múltiple,múltiplo,múltiple ,NA,multiplo,multiple,0.8,1,0.8,2376,26.47632359220061,8,22123,53.33776204963284,4183,4.801879822418105,7.5
+music,noun,yes,yes,yes,no,no,no,música,música,música,música,NA,musica,musica,0.75,0.75,1,14226,158.52364453815062,5,107695,259.6487946451751,94040,107.95332978728149,106.4285714
+musical,noun/adjective,yes,yes,yes,no,no,no,musical,musical,musical,musical,NA,musical,musical,1,1,1,2961,32.99511538573485,7,17671,42.60414921932206,28192,32.363039912410045,14.28571429
+nostalgia,noun,yes,yes,yes,no,no,no,nostalgia,nostalgia,nostalgia,nostalgia,NA,nostalgia,nostalgia,1,1,1,486,5.415611643859216,9,NA,NA,2439,2.7998529492894466,27.32142857
+object,noun,yes,yes,yes,no,no,no,objeto,objeto,objeto,objeto,NA,objeto,objeto,0.72,0.72,1,6034,67.23827296100104,6,15954,38.46452360619456,113494,130.2855722126513,96.96428571
+observatory,noun,yes,yes,yes,no,no,no,observatório,observatorio,observatório,observatorio ,NA,observatorio,observatorio,0.79,0.79,1,220,2.451511443722279,11,NA,NA,734,0.8425961725208914,2.321428571
+occasion,noun,yes,yes,yes,no,no,no,ocasião,ocasión,ocasião,ocasión ,NA,ocasiao,ocasion,0.69,0.97,0.75,5037,56.12846882740508,8,8847,21.329800698508418,42680,48.994556734593516,107.5
+ocean,noun,yes,yes,yes,no,no,no,oceano,océano,oceano,océano ,NA,oceano,oceano,0.75,0.75,1,1925,21.45072513256994,5,17884,43.11768460406064,5134,5.893581402891357,18.21428571
+opera,noun,yes,yes,yes,no,no,no,ópera,ópera,ópera,ópera,NA,opera,opera,1,1,1,2261,25.194851701163962,5,4,0.00964385699039603,6883,7.901348031963616,11.07142857
+opportunity,noun,yes,yes,yes,no,no,no,oportunidade,oportunidad,oportunidade,oportunidad,NA,oportunidade,oportunidad,0.62,0.67,0.86,9475,105.5821405875845,11,42366,102.14291131377955,71601,82.19445306358084,53.03571429
+original,noun,yes,yes,yes,no,no,no,original,original,original,original ,NA,original,original,1,1,1,10895,121.40553263342831,8,36090,87.01169969584818,64936,74.54335839075831,40.53571429
+palace,noun,yes,yes,yes,no,no,no,palácio,palacio,palácio,palacio,NA,palacio,palacio,0.67,0.67,1,4890,54.490413453645196,6,14,0.0337534994663861,6801,7.8072160344885315,50.71428571
+panic,noun,yes,yes,yes,no,no,no,pânico,pánico,pânico,pánico ,NA,panico,panico,0.75,0.75,1,1986,22.130462396511117,5,13,0.0313425352187871,7343,8.429405578775075,21.25
+panorama,noun,yes,yes,yes,no,no,no,panorama,panorama,panorama,panorama,NA,panorama,panorama,1,1,1,216,2.4069385083818737,8,NA,NA,10771,12.364582253709155,26.42857143
+paradise,noun,yes,yes,yes,no,no,no,paraíso,paraíso,paraíso,paraíso,NA,paraiso,paraiso,0.72,0.72,1,979,10.90922592456414,8,9,0.021698678228391065,6070,6.968063715533802,28.75
+park,noun,yes,yes,yes,no,no,no,parque,parque,parque,parque,NA,parque,parque,0.5,0.5,1,10500,117.0039552685633,4,30187,72.77977774227124,26296,30.18652445859586,35.53571429
+part,noun,yes,yes,yes,no,no,no,parte,parte,parte,parte,NA,parte,parte,0.71,0.71,1,46714,520.5450253729206,4,194295,468.43829848724914,575431,660.5667004766608,604.8214286
+pastor,noun,yes,yes,yes,no,no,no,pastor,pastor,pastor,pastor,NA,pastor,pastor,1,1,1,249,2.7746652249402155,6,22,0.05304121344717816,6591,7.566146284857213,9.821428571
+patience,noun,yes,yes,yes,no,no,no,paciência,paciencia,paciência,paciencia ,NA,paciencia,paciencia,0.55,0.55,1,1153,12.84814861187176,8,5,0.012054821237995037,12389,14.221967277059022,28.75
+patio,noun,yes,yes,yes,no,no,no,pátio,patio,pátio,patio,NA,patio,patio,1,1,1,391,4.357004429524595,5,2854,6.880891962647567,6867,7.882980812944089,48.39285714
+perfume,noun,yes,yes,yes,no,no,no,perfume,perfume,perfume,perfume,NA,perfume,perfume,1,1,1,536,5.97277333561428,7,2847,6.864015212914374,2580,2.9617140668990456,18.39285714
+photo,noun,yes,yes,yes,no,no,no,foto,foto,foto,foto,NA,foto,foto,0.67,0.67,1,1126,12.547281298324027,5,16087,38.78518185112523,34489,39.591688547783406,36.25
+planet,noun,yes,yes,yes,no,no,no,planeta,planeta,planeta,planeta,NA,planeta,planeta,0.78,0.78,1,1745,19.444943042251708,6,18761,45.23210024920498,22131,25.40530775757472,52.14285714
+plan,noun,yes,yes,yes,no,no,no,plano,plan,plano,plan,NA,plano,plan,0.71,1,0.71,13177,146.83439224512938,4,67930,163.77680133940058,128428,147.42907526500414,63.75
+plant,noun,yes,yes,yes,no,no,no,planta,planta,planta,planta,NA,planta,planta,0.75,0.75,1,7818,87.11780212282169,5,34691,83.63876071345716,51441,59.05175709897435,38.39285714
+plaza,noun,yes,yes,yes,no,no,no,praça,plaza,praça,plaza,NA,praca,plaza,0.71,1,0.71,173,1.9277794534725192,5,NA,NA,24392,28.00082539527191,97.67857143
+pretension,noun,yes,yes,yes,no,no,no,pretensão,pretensión,pretensão,pretensión ,NA,pretensao,pretension,0.82,1,0.82,72,0.8023128361272912,10,239,0.5762204551761627,10905,12.51840771299771,15
+propaganda,noun,yes,yes,yes,no,no,no,propaganda,propaganda,propaganda,propaganda ,"In Portuguese and LatAm Spanish, it can also mean advertising",propaganda,propaganda,1,1,1,1116,12.435848959973015,10,NA,NA,29758,34.160731473946434,17.32142857
+protector,noun,yes,yes,yes,no,no,no,protetor,protector,protetor,protector ,NA,protetor,protector,0.92,1,0.92,344,3.8332724392748356,9,1070,2.579731744930938,5468,6.276997099924024,5.178571429
+radical,noun/adjective,yes,yes,yes,no,no,no,radical,radical,radical,radical ,NA,radical,radical,1,1,1,3948,43.993487180979805,7,11386,27.451238923162297,22406,25.720994334472877,30.89285714
+radio,noun,yes,yes,yes,no,no,no,rádio,radio,rádio,radio,NA,radio,radio,1,1,1,8097,90.22676436281496,5,43484,104.83836934259524,36036,41.36756903673411,83.21428571
+ranch,noun,yes,yes,yes,no,no,no,rancho ,rancho,rancho,rancho,NA,rancho ,rancho,0.75,0.75,NA,128,1.4263339308929623,5,NA,NA,NA,NA,6.25
+reality,noun,yes,yes,yes,no,no,no,realidade,realidad,realidade,realidad,NA,realidade,realidad,0.55,0.6,0.82,6275,69.92379231526046,7,35647,85.94364253416181,175786,201.79374766043242,210.5357143
+region,noun,yes,yes,yes,no,no,no,região,región,região,región,NA,regiao,region,0.72,1,0.72,8961,99.85451839634247,6,41027,98.91463018624448,379154,435.25028500815534,44.28571429
+religion,noun,yes,yes,yes,no,no,no,religião,religión,religião,religión ,NA,religiao,religion,0.77,1,0.77,4192,46.71243623674451,8,25294,60.98292967876929,30401,34.898864088293756,49.82142857
+reunion,noun,yes,yes,yes,no,no,no,reunião,reunión,reunião,reunión ,NA,reuniao,reunion,0.75,1,0.75,541,6.0284895047897855,7,62,0.14947978335113846,88393,101.4708494245765,60.35714286
+revision,noun,yes,yes,yes,no,no,no,revisão,revisión,revisão,revisión ,NA,revisao,revision,0.78,1,0.78,1046,11.655822591515925,8,2482,5.984013262540736,142605,163.7035792674955,11.96428571
+ritual,noun,yes,yes,yes,no,no,no,ritual,ritual,ritual,ritual,NA,ritual,ritual,1,1,1,1433,15.968254085700115,6,17,0.040986392209183126,11347,13.0258021384122,18.21428571
+savor,verb,yes,yes,yes,no,no,no,sabor,sabor,sabor,sabor ,NA,sabor,sabor,0.86,0.86,1,3,0.0334297015053038,5,358,0.8631252006404446,12471,14.316099274534109,24.46428571
+salary,noun,yes,yes,yes,no,no,no,salário,salario,salário,salario ,NA,salario,salario,0.67,0.67,1,1728,19.255508067054986,6,NA,NA,72325,83.02556972421452,12.14285714
+series,noun,yes,yes,yes,no,no,no,série,serie,série,serie ,NA,serie,serie,0.86,0.86,1,13995,155.94955752224223,6,56973,137.35986607845825,168609,193.55490197898496,100.7142857
+sofa,noun,yes,yes,yes,no,no,no,sofá,sofá,sofá,sofá,NA,sofa,sofa,1,1,1,987,10.99837179524495,4,NA,NA,2392,2.7458992434195806,17.67857143
+subversion,noun,yes,yes,yes,no,no,no,subversão,subversión,subversão ,subversión ,NA,subversao,subversion,0.82,1,0.82,228,2.540657314403089,10,NA,NA,2681,3.0776571369598225,3.214285714
+taxi,noun,yes,yes,yes,no,no,no,táxi,taxi,táxi,taxi ,NA,taxi,taxi,1,1,1,1736,19.3446539377358,4,NA,NA,3978,4.566549828730389,22.5
+television,noun,yes,yes,yes,no,no,no,televisão,televisión,televisão,televisión ,NA,televisao,television,0.82,1,0.82,9197,102.48432158142634,10,50345,121.37999504537203,47625,54.67117536281669,146.7857143
+terror,noun,yes,yes,yes,no,no,no,terror,terror,terror,terror,NA,terror,terror,1,1,1,1483,16.52541577745518,6,12672,30.55173894557462,7697,8.835780299582153,35.17857143
+total,adjective/noun,yes,yes,yes,no,no,no,total,total,total,total ,NA,total,total,1,1,1,16629,185.30083544389896,5,55030,132.6753625453734,292136,335.3578684680696,134.6428571
+transit,noun,yes,yes,yes,no,no,no,trânsito,tránsito,trânsito,tránsito,NA,transito,transito,0.8,0.8,1,852,9.494035227506279,7,76,0.18323328281752455,34498,39.602020108481895,12.14285714
+uniform,noun,yes,yes,yes,no,no,no,uniforme,uniforme,uniforme,uniforme,NA,uniforme,uniforme,0.8,0.8,1,2452,27.323209363668305,7,NA,NA,14245,16.352564683324385,33.57142857
+union,noun,yes,yes,yes,no,no,no,união,unión,união,unión ,NA,uniao,union,0.68,1,0.68,16183,180.3309531534438,5,25309,61.01909414248328,26954,30.941876340773984,29.46428571
+universe,noun,yes,yes,yes,no,no,no,universo,universo,universo,universo ,NA,universo,universo,0.8,0.8,1,2555,28.470962448683736,8,16527,39.84600612006879,43824,50.307812894489835,52.14285714
+university,noun,yes,yes,yes,no,no,no,universidade,universidad,universidade,universidad,NA,universidade,universidad,0.64,0.69,0.86,15706,175.0156306141005,10,41025,98.90980825774928,50332,57.778679230683245,42.85714286
+vegetable,noun,yes,yes,yes,no,no,no,vegetal,vegetal,vegetal,vegetal,NA,vegetal,vegetal,0.86,0.86,1,929,10.352064232809077,9,7478,18.029190643545377,18481,21.215285918744677,9.285714286
+velocity,noun,yes,yes,yes,no,no,no,velocidade,velocidad,velocidade,velocidad,NA,velocidade,velocidad,0.58,0.64,0.83,828,9.22659761546385,8,2847,6.864015212914374,67194,77.13543217488935,78.57142857
+version,noun,yes,yes,yes,no,no,no,versão,versión,versão,versión ,NA,versao,version,0.75,1,0.75,7865,87.64153411307146,7,28604,68.96322133832201,71122,81.6445844441837,39.46428571
+violin,noun,yes,yes,yes,no,no,no,violino,violín,violino,violín,False cognate in portuguese: violão,violino,violin,0.78,1,0.78,530,5.905913932603672,6,2662,6.417986827108558,1901,2.1822552097577854,5.178571429
+advertising,noun,yes,yes,yes,yes,yes,no,advertência,advertencia,propaganda/publicidade,publicidad,NA,advertencia,advertencia,0.62,0.62,1,4042,45.04095116147932,11,12984,31.303959790825512,4654,5.342564832305488,10.71428571
+dance,verb/noun,no,no,no,no,no,no,dança,danza,dança,danza/baile,NA,danca,danza,NA,NA,NA,4117,45.87669369911191,5,19161,46.19648594824458,20489,23.520371905695562,12.85714286
+jug,noun,no,no,no,yes,yes,yes,jugo,jugo,jarra,jarra,jugo is a false cognate in portuguese/spanish too,jugo,jugo,0.67,0.67,1,485,5.404468410024114,3,NA,NA,1242,1.425755376390936,9.642857143
+jar,noun,no,no,no,yes,yes,no,jarra,jarra,frasco,frasco,NA,jarra,jarra,0.57,0.57,NA,567,6.318213584502418,3,33,0.07956182017076724,331,0.37997184346650553,3.928571429
+vial,noun,no,yes,no,no,no,no,via,vial,frasco,vial,vial can also be a road or something referring to roads in Spanish (administración vial),via,vial,NA,1,NA,158,1.760630945946,4,NA,NA,112038,128.61415528187416,NA
+sob,noun/verb,no,no,yes,yes,no,no,sob,sobre,soluçar,sollozar,NA,sob,sobre,1,NA,0.8,233,2.596373483578595,3,81,0.1952881040555196,257979,296.1472997149415,1458.75
+leopard,noun,yes,yes,yes,no,no,no,leopardo,leopardo,leopardo,leopardo,NA,leopardo,leopardo,0.8,0.8,1,237,2.6409464189190004,7,NA,NA,200,0.22959023774411208,0.535714286
+hippopotamus,noun,yes,yes,yes,no,no,no,hipopótamo,hipopótamo,hipopótamo,hipopótamo,NA,hipopotamo,hipopotamo,0.79,0.79,1,36,0.4011564180636456,12,NA,NA,159,0.1825242390065691,0.535714286
+group,noun,yes,yes,yes,no,no,no,grupo,grupo,grupo,grupo,NA,grupo,grupo,0.68,0.68,1,38953,434.0623875786996,5,7,0.01687674973319305,456304,523.8147192179466,226.9642857
+problem,noun,yes,yes,yes,no,no,no,problema,problema,problema,problema,NA,problema,problema,0.8,0.8,1,25388,282.90442060555097,7,126428,304.8133878954473,238762,274.08712172129844,210
+human,noun,yes,yes,yes,no ,no,no,humano,humano,humano,humano,NA,humano,humano,0.75,0.75,1,18987,211.57658082706774,5,106151,255.92626584688225,96804,111.12626687290513,134.1071429
+information,noun,yes,yes,yes,no,no,no,informação,información,informação,información,NA,informacao,informacion,0.75,0.92,0.83,36522,406.97318612556853,11,132976,320.60038178872566,154888,177.80386371855016,133.0357143
+moment,noun,yes,yes,yes,no,no,no,momento,momento,momento,momento,NA,momento,momento,0.78,0.78,1,19189,213.8275140617582,6,111,0.2676170314834898,284494,326.5852254838671,474.4642857
+list,noun,yes,yes,yes,no,no,no,lista,lista,listas,listas,NA,lista,lista,0.71,0.71,1,11486,127.99118382997314,4,47369,114.20496544451738,62761,72.04656455529108,64.46428571
+mortal,noun/adjective,yes,yes,yes,no,no,no,mortal,mortal,mortal,mortal,NA,mortal,mortal,1,1,1,485,5.404468410024115,6,1718,4.1420365773750945,3622,4.1578792055458695,20.35714286
+exam,noun,yes,yes,yes,no,no,no,exame,examen,exame,examen,NA,exame,examen,0.71,0.62,0.86,540,6.017346270954684,4,6,0.014465785485594044,80866,92.83022082707684,25.35714286
+computer,noun,yes,yes,yes,yes,no,no,computador,computadora,computador,ordenador,both 'computadora' and ordenador are possible as translation into Spanish,computador,computadora,0.69,0.56,0.92,12964,144.46088343825284,8,53452,128.87086096266214,42352,48.61802874469317,5.357142857
+apartment,noun,yes,yes,yes,no,no,no,apartamento,apartamento,apartamento,apartamento,NA,apartamento,apartamento,0.68,0.68,1,1280,14.26333930892962,9,27709,66.80540833672089,15741,18.069899661650343,14.46428571
+animal,noun,yes,yes,yes,no,no,no,animal,animal,animal,animal,NA,animal,animal,1,1,1,6478,72.185868783786,6,25249,60.87443628762734,61824,70.97093429145993,73.03571429
+movement,noun,yes,yes,yes,no,no,no,movimento,movimiento,movimento,movimiento,NA,movimento,movimiento,0.66,0.54,0.9,13006,144.9288992593271,8,46323,111.68309684152882,164177,188.46718231057542,119.2857143
+metabolism,noun,yes,yes,yes,no,no,no,metabolismo,metabolismo,metabolismo,metabolismo,NA,metabolismo,metabolismo,0.85,0.85,1,489,5.4490413453645195,10,1745,4.207132612060268,13237,15.195429885094057,5.714285714
+equipment,noun,yes,no,no,no,yes,yes,equipamento,equipo,equipamento,equipo,NA,equipamento,equipo,0.68,0.75,0.54,8531,95.0629278472489,9,29019,69.9637715010756,29817,34.22846059408095,203.5714286
+department,noun,yes,yes,yes,no,no,no,departamento,departamento,departamento,departamento,NA,departamento,departamento,0.71,0.71,1,16767,186.83860171314294,10,41047,98.96284947119646,47642,54.69069053302494,34.82142857
+crocodile,noun,yes,yes,yes,no,no,no,crocodilo,cocodrilo,crocodilo,cocodrilo,NA,crocodilo,cocodrilo,0.82,0.65,0.81,233,2.5963734835785948,9,NA,NA,487,0.5590522289069129,3.214285714
+calendar,noun,yes,yes,yes,no,no,no,calendário,calendario,calendário,calendario,NA,calendario,calendario,0.75,0.75,1,1036,11.544390253164913,8,6,0.014465785485594044,11459,13.154372671548902,14.10714286
+auditorium,noun,yes,yes,yes,no,no,no,auditório,auditorio,auditório,auditorio,NA,auditorio,auditorio,0.82,0.82,1,201,2.2397900008553546,10,NA,NA,9309,10.686277615799696,3.928571429
+activities,noun,yes,no,yes,no,no,no,atividades,actvidades,atividades,ocupaciones,NA,atividades,actvidades,0.68,NA,0.89,11292,125.82939646596351,10,45085,108.69832310300124,270812,310.8789573197924,NA
+access,noun,yes,yes,yes,no,no,no,acesso,acceso,acesso,acceso,NA,acesso,acceso,0.72,0.75,0.84,10364,115.48847546698954,6,37059,89.34792405177161,152814,175.4230129531437,47.32142857
+academic,noun,yes,yes,yes,no,no,no,acadêmico,académico,acadêmico,académico,NA,academico,academico,0.82,0.82,1,4762,53.06407952275224,8,30218,72.85451763394681,18293,20.99947109526521,7.142857143
+language,noun,no,no,no,no,yes,no,linguagem,lenguaje,idioma,"lengua, idioma",NA,linguagem,lenguaje,NA,0.8,NA,17960,200.13247967841875,8,52047,125.48345619478553,98640,113.23390525539608,82.32142857
+electricity,noun,yes,yes,yes,no,no,no,eletricidade,electricidad,eletricidade,electricidad,NA,eletricidade,electricidad,0.53,0.71,0.75,3476,38.733880810812,11,12443,29.99962813287445,7169,8.229662071937698,17.32142857
+effects,noun,yes,yes,yes,no,no,no,efeito,efecto,efeito,efecto,NA,efeito,efecto,0.59,0.72,0.88,10478,116.75880412419107,7,41608,100.3154004140995,180452,207.15008790700256,89.64285714
+dissertation,noun,yes,yes,yes,no,no,no,dissertação,disertación,dissertação,disertación,NA,dissertacao,disertacion,0.77,0.88,0.71,275,3.064389304652848,12,NA,NA,24323,27.921616763250192,0.892857143
+dictionary,noun,yes,yes,yes,no,no,no,dicionário,diccionario,dicionário,diccionario,NA,dicionario,diccionario,0.68,0.69,0.93,1607,17.907176773007738,10,NA,NA,9102,10.44865171973454,9.642857143
+competition,noun,yes,yes,yes,no,no,no,competição,competición,competição,competencia,competición in Spanish refers to an event,competicao,competicion,0.75,0.92,0.83,8976,100.02166690386898,11,28004,67.5166427897626,46766,53.68508529170573,24.64285714
+memory,noun,yes,yes,yes,no,no,no,memória,memoria,memória,memoria,NA,memoria,memoria,0.67,0.67,1,7211,80.35385918491522,6,31211,75.24860513181262,67864,77.90455947133212,158.0357143
+line,noun,yes,yes,yes,no,no,no,linha,línea,linha,línea,NA,linha,linea,0.57,0.71,0.86,20790,231.66783143175533,4,104593,252.16998354912297,120808,138.68168720695346,87.14285714
+local,noun,yes,yes,yes,no,no,no,local,local,local,local,NA,local,local,1,1,1,43021,479.3930628198916,5,6,0.014465785485594044,220593,253.22999657343456,50.53571429
+history,noun,yes,yes,yes,no,no,no,história,historia,história,historia,NA,historia,historia,0.7,0.7,1,18584,207.08585759152194,7,115916,279.4693317246865,293417,336.82839394082066,332.8571429
+million,noun,yes,yes,yes,no,no,no,milhão,millón,milhão,millón,NA,milhao,millon,0.62,0.93,0.59,22921,255.41406273435615,7,159336,384.1533993554354,39907,45.811288088271404,41.96428571
+idea,noun,yes,yes,yes,no,no,no,ideia,idea,ideia,idea,NA,ideia,idea,0.82,1,0.82,19078,212.59061510606196,4,53,0.1277811051227474,1917,2.200622428777314,195.7142857
+material,noun,yes,yes,yes,no,no,no,material,material,material,material,NA,material,material,1,1,1,13067,145.60863652326825,8,35293,85.09016119051176,166631,191.28425452769568,63.39285714
+hour,noun,yes,yes,yes,no,no,no,hora,hora,hora,hora,NA,hora,hora,0.62,0.62,1,9324,103.89951227848421,4,55464,133.72172102883135,106530,122.2912401344013,216.9642857
+hotel,noun,yes,yes,yes,no,no,no,hotel,hotel,hotel,hotel,NA,hotel,hotel,1,1,1,11053,123.1661635793743,5,34513,83.20960907738454,22377,25.68770374999998,64.28571429
+manner,noun,yes,yes,yes,no,no,no,maneira,manera,maneira,manera,NA,maneira,manera,0.64,0.68,0.83,5930,66.07937664215052,6,17962,43.30573981537337,193653,222.30419154930266,242.5
+hospital,noun,yes,yes,yes,no,no,no,hospital,hospital,hospital,hospital,NA,hospital,hospital,1,1,1,14100,157.11959707492787,8,48693,117.39708210833847,65376,75.04845691379535,45.71428571
+gas,noun,yes,yes,yes,no,no,no,gás,gas,gás,gas,NA,gas,gas,1,1,1,6649,74.09136176958832,3,36870,88.8922518089754,32192,36.95484466729228,33.21428571
+independence,noun,yes,yes,yes,no,no,no,independência,independencia,independência,independencia,NA,independencia,independencia,0.8,0.8,1,4358,48.56221305337132,12,15850,38.213783324444265,26979,30.970575120491997,NA
+metal,noun,yes,yes,yes,no,no,no,metal,metal,metal,metal,NA,metal,metal,1,1,1,4298,47.893619023265245,5,21587,52.04548521291977,20012,22.972799188675857,18.39285714
+ideal,noun/adjective,yes,yes,yes,no,no,no,ideal,ideal,ideal,ideal,NA,ideal,ideal,1,1,1,5372,59.861452162164014,5,14433,34.79744698559647,55833,64.09355871983504,43.39285714
+motor,noun,yes,yes,yes,no,no,no,motor,motor,motor,motor,NA,motor,motor,1,1,1,4462,49.721109372221854,5,135,0.325480173425866,28469,32.68102239168564,33.21428571
+minute,noun,yes,yes,yes,no,no,no,minuto,minuto,minuto,minuto,NA,minuto,minuto,0.75,0.75,1,6680,74.43680201847646,6,33219,80.08982134099142,16261,18.666834279785032,34.28571429
+intelligence,noun,yes,yes,yes,no,no,no,inteligência,inteligencia,inteligência,inteligencia,NA,inteligencia,inteligencia,0.69,0.69,1,3437,38.29929469124305,12,28255,68.12179481590995,25080,28.790615813111657,58.92857143
+identification,noun,yes,yes,yes,no,no,no,identificação,identificación,identificação,identicación,NA,identificacao,identificacion,0.8,0.94,0.87,2157,24.035955382313432,14,NA,NA,74932,86.01827847320902,NA
+magic,noun,yes,yes,yes,no,no,no,mágico,mágico,mágico,mágico,NA,magico,magico,0.75,0.75,1,3050,33.98686319705887,5,16676,40.205239792961045,4567,5.2426930788867985,16.78571429
+lesson,noun,yes,yes,yes,no,no,no,lição,lección,lição,lección,NA,licao,leccion,0.43,0.61,0.57,1995,22.23075150102703,6,15366,37.04687662860635,9521,10.929643267808455,22.85714286
+mate,noun,no,no,no,yes,yes,yes,mate,mate,companheiro,compañero,NA,mate,mate,1,1,1,1406,15.66738677215238,4,NA,NA,2186,2.509421298543145,11.07142857
+inspection,noun,yes,yes,yes,no,no,no,inspeção,inspección,inspeção,inspección,NA,inspecao,inspeccion,0.77,0.92,0.77,1884,20.99385254533079,10,NA,NA,9834,11.28895198987799,8.035714286
+lemon,noun,yes,yes,yes,no,no,no,limão,limón,limão,limón,NA,limao,limon,0.53,0.86,0.68,1107,12.335559855457102,5,9,0.021698678228391065,2834,3.253293668834068,6.607142857
+horror,noun,yes,yes,yes,no,no,no,horror,horror,horror,horror,NA,horror,horror,1,1,1,2047,22.810199660452295,6,7596,18.313684424762062,5895,6.767172257507704,29.82142857
+invasion,noun,yes,yes,yes,no,no,no,invasão,invasión,invasão,invasión,NA,invasao,invasion,0.78,1,0.78,1884,20.99385254533079,8,NA,NA,20454,23.480193614090343,21.25
+map,noun,yes,yes,yes,no,no,no,mapa,mapa,mapa,mapa,NA,mapa,mapa,0.67,0.67,1,3986,44.416930066713654,3,17650,42.55351897012248,19871,22.810938071066257,22.32142857
+mania,noun,yes,yes,yes,no,no,no,mania ,manía,mania,manía,NA,mania ,mania,1,1,NA,178,1.9834956226480254,5,NA,NA,NA,NA,12.5
+manual,noun,yes,yes,yes,no,no,no,manual,manual,manual,manual,NA,manual,manual,1,1,1,2247,25.03884642747255,6,4086,9.851199915689545,26814,30.781163174353107,12.85714286
+menu,noun/adjective,no,yes,no,yes,no,no,menu,menú,cardápio,menú,NA,menu,menu,1,1,NA,1461,16.28026463308295,4,4,0.00964385699039603,4993,5.731720285281758,5.892857143
+maestro,noun,no,no,yes,no,no,yes,maestro,maestro,maestro,conductor,NA,maestro,maestro,NA,NA,1,141,1.5711959707492786,7,674,1.624989902881731,4851,5.568711216483439,41.78571429
+helicopter,noun,yes,yes,yes,no,no,no,helicóptero,helicóptero,helicóptero,helicóptero,NA,helicoptero,helicoptero,0.85,0.85,1,1032,11.499817317824506,10,NA,NA,4474,5.1359336183357875,5.714285714
+melon,noun,yes,yes,yes,no,no,no,melão,melón,melão,melón,NA,melao,melon,0.68,1,0.68,197,2.19521706551495,5,9,0.021698678228391065,3164,3.632117561111853,3.214285714
+society,noun,yes,yes,yes,no,no,no,sociedade,sociedad,sociedade,sociedad,NA,sociedade,sociedad,0.55,0.6,0.82,22917,255.36948979901572,7,133,0.32065824493066797,326605,374.92659799207865,222.6785714
+cores,noun,no,no,no,yes,no,no,cores,colores,núcleos,núcleos,NA,cores,colores,1,NA,NA,203,2.262076468525557,5,858,2.0686073244399483,28077,32.231025525707174,NA
+dent,noun/verb,no,no,no,yes,yes,no,dente,diente,mossa,abolladura,NA,dente,diente,0.71,0.59,NA,324,3.6104077625728106,4,1675,4.038365114728337,11051,12.686008586550912,6.964285714
+assume,verb,no,no,yes,yes,yes,no,assumir,asumir,supor,suponer,but it is a true cognate in the sense of assume a role/office,assumir,asumir,0.67,0.59,0.86,3784,42.16599683202319,6,6,0.014465785485594044,37291,42.80824777857842,21.07142857
+pull,verb,no,no,no,yes,yes,no,pular,pull,puxar,tirar,pull in spanish is a sweater,pular,pull,0.57,1,NA,3732,41.58654867259793,4,15997,38.56819506884132,2574,2.9548263597667224,NA
+collar,noun,no,no,yes,yes,no,no,collar,collar,gola,collar,but there are also true cognates colarinho and coleira in PT,collar,collar,1,NA,1,1316,14.664495726993268,6,30,0.07232892742797022,128,0.14693775215623173,6.25
+army,noun,no,no,yes,yes,yes,no,arma,arma,exército,ejército,NA,arma,arma,0.67,0.67,1,10962,122.15212930038008,4,28950,69.79741496799126,21924,25.167681861509564,34.82142857
+eventually,noun,no,no,yes,yes,yes,no,eventualmente,eventualmente,finalmente,finalmente,NA,eventualmente,eventualmente,0.6,0.6,1,8529,95.0406413795787,10,36109,87.05750801655256,13993,16.063280983766802,NA
+large,noun,no,no,yes,yes,yes,no,largo,largo,grande,grande,NA,largo,largo,0.71,0.71,1,32569,362.92398277541315,5,116954,281.9719126136943,11050,12.684860635362192,136.7857143
+rim,noun,no,no,no,yes,no,no,rim,rima,beira,borde,NA,rim,rima,1,NA,NA,618,6.886518510092582,3,32,0.07715085592316824,4130,4.741038409415914,1.785714286
+resume,verb,no,no,yes,yes,yes,no,resumir,resumir,retomar,continuar,NA,resumir,resumir,0.67,0.67,1,712,7.9339824905921015,6,NA,NA,2637,3.027147284656118,5
+sensual,adjective,yes,yes,yes,no,no,no,sensual,sensual,sensual,sensual,NA,sensual,sensual,1,1,1,345,3.8444156731099373,7,NA,NA,1668,1.9147825827858944,5
+amass,verb,no,no,yes,yes,yes,no,amassar,amasar,acumular,acumular,spanish amasar can also be a true cognate,amassar,amasar,0.67,0.62,0.83,52,0.579448159425266,5,69,0.1663565330843315,187,0.2146668722907448,0.892857143
+pretend,verb,no,no,yes,yes,yes,no,pretender,pretender,fingir,fingir,NA,pretender,pretender,0.73,0.73,1,1162,12.948437716387673,7,NA,NA,3875,4.448310856292171,10.17857143
+support,verb,yes,no,yes,yes,yes,no,suporte,soporte,apoiar,apoyar,NA,suporte,soporte,0.72,0.64,0.89,27780,309.5590359391132,7,118170,284.9036451387747,44987,51.64288012697185,11.96428571
+record,verb,no,no,yes,yes,yes,no,recorde ,récord,registrar,registrar,NA,recorde ,record,0.78,1,NA,13886,154.7349450342162,6,53020,127.82932440769937,NA,NA,11.96428571
+assist,verb,no,no,yes,yes,yes,no,assistir,asistir,ajudar,ayudar,NA,assistir,asistir,0.7,0.64,0.87,2426,27.03348528395567,6,1326,3.196938592316284,16403,18.829843348583353,20.89285714
+parents,noun,no,yes,yes,yes,no,no,parente,pariente,pais,los padres,NA,parente,pariente,0.78,0.62,0.91,15188,169.24343548751804,7,104069,250.9066382833811,4670,5.360932051325017,11.07142857
+legend,adjective,no,yes,no,yes,no,yes,legenda,leyenda,lenda,leyenda,NA,legenda,leyenda,0.78,0.67,0.89,1229,13.695034383339458,6,10,0.024109642475990074,6095,6.996762495251816,24.28571429
+mayor,noun,no,no,no,yes,yes,no,maior,mayor,prefeito,alcalde,NA,maior,mayor,0.86,1,NA,1784,19.87952916182066,5,15908,38.35361925080501,763633,876.6134100962477,398.9285714
+library,noun,no,no,yes,yes,yes,no,livraria,librería,biblioteca,biblioteca,NA,livraria,libreria,0.6,0.61,0.8,7805,86.97294008296538,7,15141,36.50440967289657,3736,4.2887456410600135,5.892857143
+comment,verb,yes,yes,yes,no,no,no,comentar,comentar,comentar ,comentar,NA,comentar,comentar,0.65,0.65,1,4537,50.55685190985445,7,12116,29.211242823909572,13731,15.762517772322015,16.42857143
+complete,adjective,yes,yes,yes,no,no,no,completo,completo,completo,completo,NA,completo,completo,0.8,0.8,1,12188,135.81373398221425,8,38070,91.7854089060942,53788,61.7459985389015,28.92857143
+diversion,noun,no,no,no,yes,yes,yes,diversão,diversión,desvio,desviación ,NA,diversao,diversion,0.8,1,0.8,536,5.972773335614279,9,NA,NA,5451,6.257481929715775,11.07142857
+imagine,verb,yes,yes,yes,no,no,no,imaginar,imaginar,imaginar,imaginar,NA,imaginar,imaginar,0.7,0.7,1,5106,56.89735196202707,7,20948,50.504879058704006,13789,15.829098941267807,41.25
+consult,verb,yes,yes,yes,no,no,no,consulta,consulta,consultar,consultar,NA,consulta,consulta,0.8,0.8,1,1142,12.725573039685646,7,1281,3.0884452011743284,29128,33.43752222505249,21.42857143
+amplify,verb,yes,yes,yes,no,no,no,amplificar,amplificar,amplificar,amplificar,NA,amplificar,amplificar,0.58,0.58,1,101,1.125466617345228,7,135,0.325480173425866,573,0.6577760311368811,0.714285714
+simplify,verb,yes,yes,yes,no,no,no,simplificar,simplificar,simplificar ,simplificar,NA,simplificar,simplificar,0.62,0.62,1,321,3.576978061067507,8,NA,NA,2732,3.136202647584571,1.785714286
+celebrate,verb,yes,yes,yes,no,no,no,celebrar,celebrar,celebrar,celebrar,NA,celebrar,celebrar,0.8,0.8,1,1348,15.021079209716506,9,NA,NA,3508,4.0270127700317255,16.60714286
+divert,verb,no,no,yes,yes,yes,no,divertir,divertir,desviar,desviar,NA,divertir,divertir,0.7,0.7,1,385,4.290145026513987,6,1261,3.040225916222348,2824,3.241814156946863,2.321428571
+possible,adjective,yes,yes,yes,no,no,no,possível,posible,possível,posible,NA,possivel,posible,0.75,0.94,0.6,32653,363.8600144175617,8,135,0.325480173425866,299152,343.4118940081331,301.7857143
+dependable,adjective,no,no,yes,yes,yes,no,dependente,dependiente,confiável,confiable,NA,dependente,dependiente,0.67,0.64,0.91,134,1.4931933339035697,10,18,0.04339735645678213,21626,24.82559240727084,8.571428571
+curse,noun,no,no,yes,yes,yes,no,curso,curso,maldição ,maldición ,NA,curso,curso,0.71,0.71,1,517,5.761051892747355,5,2488,5.99847904802633,203319,233.40028773947563,49.10714286
+motivated,adjective,yes,yes,yes,no,no,no,motivado,motivado,motivado,motivado,NA,motivado,motivado,0.73,0.73,1,911,10.151486023777254,9,1656,3.9925567940239564,4477,5.139377471901949,NA
+dairy,noun,no,no,no,yes,yes,yes,diário,diario,laticínios,lechería,NA,diario,diario,0.56,0.56,1,897,9.995480750085836,5,12,0.02893157097118809,24094,27.658735941033182,72.14285714
+associated,adjective,yes,yes,yes,no,no,no,associado,asociado,associado,asociado,NA,associado,asociado,0.75,0.67,0.88,9025,100.56768536178893,10,27647,66.65592855336976,42190,48.43206065212045,8.571428571
+costume,noun,no,no,no,yes,yes,yes,costume,costumbre,fantasia ,disfraz,NA,costume,costumbre,1,0.75,0.92,624,6.953377913103191,7,NA,NA,7464,8.568307672610262,42.5
+convict,noun,no,yes,no,yes,no,yes,convicto,convicto,condenado,convicto,NA,convicto,convicto,0.8,0.8,1,250,2.7858084587753167,7,139,0.335124030416262,1622,1.8619768281047488,1.071428571
+contest,noun,no,no,yes,yes,yes,no,contestar,contestar,concurso,concurso,NA,contestar,contestar,0.73,0.73,1,1677,18.687203141464824,7,8479,20.442565855391983,3277,3.7618360454372763,17.14285714
+confident,adjective,no,yes,no,yes,no,yes,confidente,confidente,confiante,confidente,NA,confidente,confidente,0.83,0.83,1,3015,33.59685001283032,9,11404,27.49463627961908,413,0.47410384094159147,4.821428571
+sensibility,noun,yes,yes,yes,no,no,no,sensibilidade,sensibilidad,sensibilidade,sensibilidad,NA,sensibilidade,sensibilidad,0.67,0.71,0.87,270,3.008673135477342,11,1855,4.472338679296159,45030,51.69224202808683,32.5
+system,noun,yes,yes,yes,no,no,no,sistema,sistema,sistema,sistema,NA,sistema,sistema,0.67,0.67,1,42710,475.92751709717515,6,6,0.014465785485594044,490624,563.2124040148362,250.1785714
+college,noun,no,yes,yes,yes,no,no,colégio,colegio,faculdade,colegio,NA,colegio,colegio,0.61,0.61,1,9487,105.71585939360573,7,NA,NA,14057,16.13674985984492,56.78571429
+camp,noun,no,no,yes,yes,yes,no,campo,campo,acampamento,campamento,NA,campo,campo,0.71,0.71,1,3291,36.672382551318265,4,29674,71.54295308325295,230551,264.6612945107139,184.6428571
+pacific,adjective,yes,yes,yes,no,no,no,pacífico,pacífico,pacífico,pacífico,NA,pacifico,pacifico,0.8,0.8,1,2763,30.7887550863848,7,16099,38.81411342209642,2415,2.7723021207601533,12.5
+bond,noun,no,no,no,yes,yes,yes,bonde,bondad,elo,enlace,NA,bonde,bondad,0.71,0.75,0.71,2832,31.557638221006787,4,11,0.02652060672358908,1991,2.285570816742636,14.82142857
+available,noun,no,no,yes,yes,yes,no,avaliável,avalado,disponível ,disponible,NA,avaliavel,avalado,0.72,0.61,0.52,26106,290.90526249915365,9,65912,158.91147548774578,78,0.08954019272020372,NA
+responsible,adjective,yes,yes,yes,no,no,no,responsável,responsable,responsável,responsble,NA,responsavel,responsable,0.73,0.92,0.8,8965,99.89909133168285,11,28738,69.28629054750027,109139,125.28624478577322,63.03571429
+attend,verb,no,no,yes,yes,yes,no,atender,atender,assistir,asistir,NA,atender,atender,0.64,0.64,1,3400,37.886995039344306,6,NA,NA,63702,73.12678662387714,16.96428571
+basic,adjective,yes,yes,yes,no,no,no,básico,básico,básico,básico,NA,basico,basico,0.75,0.75,1,10693,119.15459939873784,5,36332,87.59515304376714,35620,40.89002134222636,15.53571429
+vehicle,noun,yes,yes,yes,no,no,no,veículo,vehículo,veículo,vehículo,NA,veiculo,vehiculo,0.61,0.67,0.94,3939,43.89319807646389,7,17249,41.58672230683528,29042,33.33879842282252,29.64285714
+red,adjective,no,no,yes,yes,yes,no,rede,red,vermelho,rojo,NA,rede,red,0.67,1,0.67,13711,152.7848791130735,3,69412,167.3498503543423,152977,175.6101289969052,43.03571429
+letter,noun,no,no,yes,yes,yes,no,letra,letra,carta,carta,But letter in the sense of letter of the alphabet is a true cognate,letra,letra,0.61,0.61,1,12231,136.29289303712358,6,35970,86.7223839861363,21625,24.82444445608212,31.07142857
+anthem,noun,no,no,yes,yes,yes,no,antena,antena,hino,himno,NA,antena,antena,0.59,0.59,1,255,2.841524627950823,6,9,0.02169867822839107,2918,3.3497215686865953,31.78571429
+scholar,noun,no,no,no,yes,yes,no,escolar,escolar,estudioso,erudito,NA,escolar,escolar,0.72,0.72,NA,695,7.7445475153953804,7,6,0.014465785485594044,106163,121.86994204814086,10.53571429
+retired,noun,no,yes,no,yes,no,yes,retirar,retirado,aposentado ,retirado,NA,retirar,retirado,0.67,0.7,0.78,2626,29.26213205097593,7,8339,20.105030860728125,17308,19.86873917437546,10.53571429
+novel,noun,no,yes,no,yes,no,yes,novela,novela,romance,novela,NA,novela,novela,0.75,0.75,1,4031,44.918375589293206,5,17174,41.405899988265354,19374,22.240406330272137,90.17857143
+medicine,noun,no,yes,yes,yes,no,yes,medicina,medicina,remédio,medicina,NA,medicina,medicina,0.8,0.8,1,2621,29.206415881800417,8,24373,58.76243160673061,36323,41.69703102789692,43.39285714
+lunch,noun,no,no,yes,yes,yes,no,lanche,lancha,almoço,almuerzo,NA,lanche,lancha,0.62,0.62,0.75,4669,52.027758776087815,5,22678,54.67584720705029,2070,2.37625896065156,1.964285714
+net,noun,no,no,yes,yes,yes,no,neto,neto,rede,red,NA,neto,neto,0.67,0.67,1,6367,70.94896982808976,3,17394,41.936312122737135,4031,4.627391241732579,1.964285714
+drug,noun,yes,yes,yes,no,no,no,droga,droga,droga,droga,NA,droga,droga,0.57,0.57,1,4825,53.766103254363614,4,54467,131.31798967397512,24527,28.155798805749185,37.32142857
+junk,noun,no,no,yes,yes,yes,no,junco,junco,tranqueira,basura,NA,junco,junco,0.57,0.57,1,583,6.496505325864039,4,38,0.09161664140876229,204,0.23418204249899433,1.785714286
+policy,noun,no,no,yes,yes,yes,no,polícia,policía,política,política,NA,policia,policia,0.67,0.67,1,23659,263.6377693046608,6,275,0.663015168089727,93227,107.02004547085168,120.3571429
+notice,verb,no,no,yes,yes,yes,no,notícia,noticia,aviso,aviso,NA,noticia,noticia,0.67,0.67,1,8338,92.91228371707436,6,7125,17.178120264142926,26363,30.263437188240133,71.78571429
+pasta,noun,no,yes,no,yes,no,yes,pasta,pasta,macarrão,pasta,NA,pasta,pasta,1,1,1,524,5.8390545295930645,5,NA,NA,12322,14.145054547414745,16.96428571
+maul,verb,no,no,no,yes,yes,yes,mau,maula,atacar,atacar,NA,mau,maula,0.8,0.71,0.8,82,0.913745174478304,4,60,0.14465785485594043,16766,19.246549630088914,0.178571429
+dogma,noun,yes,yes,yes,no,no,no,dogma,dogma,dogma,dogma,NA,dogma,dogma,1,1,1,244,2.718949055764709,5,NA,NA,1828,2.0984547729811847,3.928571429
+prejudice,noun,no,yes,no,yes,no,yes,prejuizo,prejuicio,preconceito,prejuicio,NA,prejuizo,prejuicio,0.67,0.68,0.87,1270,14.15190697057861,9,143,0.34476788740665804,198,0.22729433536667096,3.214285714
+office,noun,no,yes,no,yes,no,yes,ofício,oficio,escritório,oficina,NA,oficio,oficio,0.59,0.59,1,23941,266.7801612461594,6,106903,257.7393109610767,16483,18.921679443680997,39.46428571
+flange,noun,yes,no,no,no,no,no,flange,flanco,flange,pestaña,NA,flange,flanco,1,NA,NA,29,0.3231537812179367,6,NA,NA,72,0.08265248558788035,3.214285714
+flank,noun,yes,yes,yes,no,no,no,flanco,flanco,flanco,flanco,NA,flanco,flanco,0.62,0.62,1,417,4.646728509237228,5,20,0.04821928495198015,1126,1.292593038499351,3.214285714
+trace,verb,yes,yes,yes,no,no,no,traçar,trazar,traçar,trazar,NA,tracar,trazar,0.62,0.5,0.88,2166,24.136244486829344,5,4131,9.9596933068315,8127,9.329399310731995,5.714285714
+inhabitable,adjective,no,no,yes,yes,yes,no,inabitável,inhabitado,habitável,habitable,NA,inabitavel,inhabitado,0.74,0.75,0.62,2,0.022286467670202533,11,39,0.09402760565636128,98,0.11249921649461492,NA
+journal,noun,no,no,yes,yes,yes,no,jornal,jornal,diário,diário,NA,jornal,jornal,0.93,0.93,1,2342,26.097453641807167,7,13191,31.803029390078507,82311,94.48901029477804,2.321428571
+exquisite,adjective,no,yes,no,yes,no,yes,esquisito,exquisito,requintado,exquisito,NA,esquisito,exquisito,0.64,0.82,0.91,543,6.050775972459988,9,NA,NA,1320,1.5152955691111396,7.142857143
+push,verb,no,no,yes,yes,yes,no,puxar,puso,empurrar,empujar,NA,puxar,puso,0.43,0.67,0.43,3074,34.254300809101295,4,11597,27.95995237940569,2374,2.7252361220226105,NA
+fill,verb,no,no,no,yes,yes,no,fila,fila,preencher,llenar,NA,fila,fila,0.67,0.67,1,3389,37.76441946715819,4,12313,29.68620278068658,11850,13.60322158633864,18.21428571
+condiment,noun,yes,yes,yes,no,no,no,condimento,condimento,condimento ,condimento,aderezo may be more common in SP,condimento,condimento,0.83,0.83,1,16,0.17829174136162027,9,225,0.5424669557097767,208,0.23877384725387657,1.25
+augment,verb,yes,yes,yes,no,no,no,aumentar,aumentar,aumento ,aumento,NA,aumentar,aumentar,0.65,0.65,1,153,1.7049147767704937,7,NA,NA,67640,77.64741840505872,27.5
+brink,noun,no,no,no,yes,yes,yes,brinco,brinco,beira,borde,NA,brinco,brinco,0.62,0.62,1,412,4.591012340061723,5,2381,5.740505873533237,920,1.0561150936229156,2.142857143
+cup,noun,no,yes,no,Yes,No,Yes,copa,copa,taça ,copa,It's a true cognate in the football cup sense,copa,copa,0.5,0.5,1,11098,123.66760910195386,3,49925,120.36739006138045,5020,5.762714967377213,48.03571429
+project,noun,yes,yes,yes,no,no,no,projeto,proyecto,projeto ,proyecto,NA,projeto,proyecto,0.75,0.7,0.83,14317,159.53767881714484,7,55039,132.69706122360176,339965,390.26322587338535,106.25
+embarrassed,adjective,no,no,no,yes,yes,yes,embaraçada,embarazada,envergonhada,avergonzada,NA,embaracada,embarazada,0.58,0.58,0.92,1364,15.199370951078128,11,NA,NA,92,0.10561150936229155,11.42857143
+preference,noun,yes,yes,yes,no,no,no,preferência,preferencia,preferência,preferencia,NA,preferencia,preferencia,0.77,0.77,1,2065,23.010777869484116,10,7,0.01687674973319305,27880,32.00487914152922,9.107142857
+date,noun,yes,no,no,yes,yes,yes,data,dato,data ,fecha,NA,data,dato,0.67,0.67,0.67,15402,171.6280875282297,4,28270,68.15795927962394,92852,106.58956377508147,28.57142857
+gaffe,noun,yes,no,no,no,Yes,no,gafe,gafa,gafe,estupidez,NA,gafe,gafa,0.95,0.67,NA,40,0.4457293534040506,5,NA,NA,461,0.5292054980001784,0.357142857
+gracious,adjective,yes,no,no,no,yes,yes,gracioso,gracioso,gracioso,indulgente,NA,gracioso,gracioso,0.77,0.77,1,350,3.9001318422854436,8,NA,NA,302,0.34668125899360924,8.928571429
+panel,noun,yes,yes,yes,no,no,no,painel,panel,painel,panel,NA,painel,panel,0.81,1,0.81,3277,36.51637727762685,5,18160,43.78311073639797,13031,14.958951940217624,1.964285714
+priority,noun,yes,yes,yes,no,no,no,prioridade,prioridad,prioridade,prioridad,NA,prioridade,prioridad,0.58,0.64,0.83,3141,35.00089747605308,8,NA,NA,26964,30.953355852661186,6.964285714
+integral,adjective,no,no,yes,yes,yes,no,integral,integral,vital,vital,NA,integral,integral,1,1,1,1186,13.215875328430101,8,4102,9.889775343651129,33472,38.4242221888546,4.821428571
+vital,adjective,yes,yes,yes,no,no,no,vital,vital,vital,vital,NA,vital,vital,1,1,1,4926,54.891569871708846,5,11294,27.22943021238319,13322,15.293005736135305,28.57142857
+fatal,adjective,yes,yes,yes,no,no,no,fatal,fatal,fatal,fatal,NA,fatal,fatal,1,1,1,1340,14.931933339035696,5,NA,NA,6366,7.307857267395088,21.60714286
+card,noun,yes,no,no,no,yes,yes,cartão,cartón,cartão,tarjeta,NA,cartao,carton,0.5,0.5,0.72,4755,52.98607688590653,4,27219,65.62403585539738,17256,19.80904571256199,10.53571429
+vista,noun,yes,yes,yes,no,no,no,vista,vista,vista,vista,NA,vista,vista,1,1,1,155,1.7272012444406961,5,3147,7.587304487194077,182477,209.4746890641617,155.3571429
+scenario,noun,yes,yes,yes,no,no,no,cenário,escenario,cenário,escenario,NA,cenario,escenario,0.89,0.82,0.89,627,6.9868076146084945,8,8540,20.589634674495525,53749,61.7012284425414,46.60714286
+stage,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,15246,169.88974304995392,5,39246,94.62070286127064,77635,89.12119053632071,NA
