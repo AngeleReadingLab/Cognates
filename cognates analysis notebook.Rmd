@@ -1,0 +1,187 @@
+---
+title: "Cognates Project"
+author: "Bernhard Angele"
+date: "29 May 2019"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+rm(list = ls())
+
+
+library(lme4)
+library(yarrr)
+library(beanplot)
+library(MASS)
+library(knitr)
+library(tidyverse)
+
+source("../Write sentences/corpus/bnc_functions.R")
+
+
+ctr <- function(x) scale(x, scale = FALSE)
+
+stim <- read_tsv("stimuli.tsv")
+stim$item <- 1:nrow(stim)
+
+stim <- stim %>% mutate(tar_bnc = find_bnc_freq(`Target word`), fill_bnc = find_bnc_freq(`Filler word`))
+
+mean(as.numeric(stim$tar_bnc), na.rm = TRUE)
+
+mean(as.numeric(stim$fill_bnc), na.rm = TRUE)
+
+sd(as.numeric(stim$fill_bnc)-as.numeric(stim$tar_bnc), na.rm = TRUE)
+
+cognate_properties <- read_csv("cognates_complete.csv")
+
+vocab <- read_csv("vocabulary_tests_English_Spanish.csv")
+
+prepare_data_frame <-  function(ixs){
+  ixs_new <- ixs %>% left_join(stim, by = "item") %>%
+    mutate(word = case_when(cond == 1 | cond == 3 ~ `Target word`,  
+                            cond == 2 | cond == 4 ~ `Filler word`)) %>% # make  a column that gives the word in the target position no matter which condition we're in
+    left_join(cognate_properties, by = c("word" = "English")) %>%
+    left_join(vocab, by = "subj") %>%
+    left_join(bnc_aggregate[bnc_aggregate$word %in% .$word,], by = "word", suffix = c("",".BNC")) %>%
+    mutate(noise = factor(case_when(
+      cond > 2 ~ "noise",
+      cond <= 2 ~ "no_noise"), levels = c("no_noise", "noise"))
+    ) %>%
+    mutate(condition = factor(case_when(
+      !`False Cognate` & (cond == 1 | cond == 3) ~ "cognate",
+      `False Cognate` & (cond == 1 | cond == 3) ~ "false_cognate",
+      !`False Cognate` & (cond == 2 | cond == 4) ~ "cognate_control",
+      `False Cognate` & (cond == 2 | cond == 4) ~ "false_cognate_control"),
+        levels = c("cognate","false_cognate","cognate_control", "false_cognate_control")))
+
+  my_contrasts <- cbind(cognate_vs_control = c(-1,0,1,0), control_vs_fc_control = c(0,0,1,-1),
+                          true_vs_false_cognate = c(-.5,.5,.5,-.5))
+  contrasts(ixs_new$condition) <- zapsmall(t(ginv(my_contrasts)))
+  colnames(contrasts(ixs_new$condition)) <- colnames(my_contrasts)
+  contrasts(ixs_new$noise) <- contr.helmert
+
+
+  return(ixs_new)
+}
+#c(C, F, CC, FC)
+# Contrast 1: CC-C = c(-1,0,1,0)
+# Contrast 2: FC-F = c(0,-1,0,1)
+# Contrast 3: (CC-C) - (FC-F) = CC - C - FC + F = -C, F, CC, -FC c(-.5,.5,.5,-.5) 
+# Can't do this because they're redundant (rank deficient)
+# So instead do a contrasts comparing the targe twords: New Contrast 2: C-FC =  c(0,0,1,-1)
+
+FFD <- read_csv("./IXS/COGFFD.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+GD <- read_csv("./IXS/COGGD.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+TVT <- read_csv("./IXS/COGTVT.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+#GOP <- read_csv("./IXS/COGGOP.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+```
+
+## Study
+
+- Idea: How do multilingual readers at different proficiency levels perceive cognates and false friends?
+- Participants: Portuguese-Spanish-English trilinguals in Ceará, Brazil reading *English* (L3) sentences with embedded cognate or control words
+- If there is no cross-talk between languages: 
+    - Effects of visual similarity alone
+    - Maybe stronger if you know the word in two languages?
+- If there is an influence of native language/L2:
+    - Effects of visual similarity plus effects of semantic overlap (e.g. "total" is faster to process than "sensible")
+    - Effect should be stronger if you are better at the L2 (more conflict between "sensible" and the meansing of "sensitive")
+    - All false friends with English were true cognates between Spanish and Portuguese
+- Plus visual noise manipulation
+
+## Example cognates and controls
+
+```{r stimuli,results = "as.is", echo = FALSE}
+kable(cognate_properties %>% dplyr::select(English, starts_with("Similar_word"), freq_per_million.x, starts_with("SOLAR")) %>% head)
+```
+
+## Example stimuli
+
+```{r cars, echo = TRUE}
+stim %>% 
+  dplyr::select(experimental_sentence,  filler_sentence)%>% 
+  head %>%
+  kable
+```
+
+## Participant proficiency
+
+```{r proficiency}
+with(filter(vocab), qplot(english, spanish,  label = subj) + geom_text(nudge_y = .03))
+```
+
+Excluding participants 16, 34, 40 because of very low English proficiency
+
+
+
+## Results: FFD
+
+```{r FFD}
+
+#beanplot(R2 ~ condition, data = GD %>% filter(!(subj %in% c(16,34,40))), beanlinewd = .1, log="",col="bisque", method="jitter")
+pirateplot(R2 ~ condition + noise, data = FFD %>% filter(!(subj %in% c(16,34,40))), theme = 3)
+ggplot(data = FFD %>% filter(!(subj %in% c(16,34,40))), aes(x = freq_per_million, y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = FFD %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(english), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = FFD %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = FFD %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish)*ctr(english), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = FFD %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish)*ctr(english)*freq_per_million, y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+```
+
+## Results: Gaze duration
+
+```{r GD}
+
+#beanplot(R2 ~ condition, data = GD %>% filter(!(subj %in% c(16,34,40))), beanlinewd = .1, log="",col="bisque", method="jitter")
+pirateplot(R2 ~ condition + noise, data = GD %>% filter(!(subj %in% c(16,34,40))), theme = 3)
+ggplot(data = GD %>% filter(!(subj %in% c(16,34,40))), aes(x = freq_per_million, y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = GD %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(english), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = GD %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = GD %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish)*ctr(english), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = GD %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish)*ctr(english)*freq_per_million, y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+```
+## Results: TVT
+
+```{r TVT}
+
+
+#beanplot(R2 ~ condition, data = GD %>% filter(!(subj %in% c(16,34,40))), beanlinewd = .1, log="",col="bisque", method="jitter")
+pirateplot(R2 ~ condition + noise, data = TVT %>% filter(!(subj %in% c(16,34,40))), theme = 3)
+ggplot(data = TVT %>% filter(!(subj %in% c(16,34,40))), aes(x = freq_per_million, y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = TVT %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(english), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = TVT %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = TVT %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish)*ctr(english), y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+ggplot(data = TVT %>% filter(!(subj %in% c(16,34,40))), aes(x = ctr(spanish)*ctr(english)*freq_per_million, y = R2, colour = condition)) + geom_smooth()+ facet_grid(noise ~ .)
+```
+```{r ffdlmm, results="as.is"}
+FFD.lmm <- lmer(data = FFD %>% filter(!(subj %in% c(16,34,40))), formula = R2 ~ condition*noise * ctr(english) * ctr(spanish)* ctr(1/freq_per_million) + (1|subj) + (1|item))
+
+FFD.lm <- lm(data = FFD %>% filter(!(subj %in% c(16,34,40))), formula = R2 ~ condition*noise * ctr(english) * ctr(spanish)* ctr(freq_per_million))
+
+summary(FFD.lmm)
+```
+
+```{r gdlmm, results="as.is"}
+
+GD.lmm <- lmer(data = GD, formula = R2 ~ condition  *  noise + (1|subj) + (1|item))
+
+
+GD.lmm <- lmer(data = GD, formula = R2 ~ condition  * noise * ctr(english) * ctr(spanish) + ctr(freq_per_million) + (1|subj) + (1|item))
+
+summary(GD.lmm)
+```
+
+```{r tvtlmm, results="as.is"}
+TVT.lmm <- lmer(data = TVT, formula = R2 ~ condition  *  noise + (1|subj) + (1|item))
+
+
+tvt.lmm <- lmer(data = TVT, formula = R2 ~ condition * noise  + ctr(english) * ctr(spanish)* ctr(freq_per_million) + (1|subj) + (1|item))
+summary(tvt.lmm)
+```

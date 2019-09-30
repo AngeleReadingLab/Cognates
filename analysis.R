@@ -3,6 +3,8 @@ rm(list = ls())
 library(tidyverse)
 library(lme4)
 library(yarrr)
+library(beanplot)
+library(MASS)
 
 ctr <- function(x) scale(x, scale = FALSE)
 
@@ -33,17 +35,25 @@ GD <- read_csv("./IXS/COGGD.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame(
 TVT <- read_csv("./IXS/COGTVT.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
 
 
-pirateplot(data = GD, R2 ~ cognate + noise + spanish)
+beanplot(R2 ~ cognate + noise, data = TVT, beanlinewd = .1, log="",col="bisque", method="jitter")
 
 
-ffd.lmm <- lmer(data = FFD, formula = R2 ~ cognate * noise + (noise|subj) + (1|item))
+ffd.lmm <- lmer(data = FFD, formula = log(R2) ~ cognate * noise + (noise|subj) + (1|item))
 
+gd.lmm <- lmer(data = GD, formula = log(R2) ~ cognate * noise + (1|subj) + (1|item))
 
-gd.lmm <- lmer(data = GD, formula = R2 ~ cognate  * ctr(english) * ctr(spanish) + noise + (1|subj) + (1|item))
+tvt.lmm <- lmer(data = TVT, formula = log(R2) ~ cognate * noise + (1|subj) + (1|item))
+
+qqnorm(resid(ffd.lmm))
+qqline(resid(ffd.lmm))
+
+gd.lmm.proficiency <- lmer(data = GD, formula = R2 ~ cognate  * ctr(english) * ctr(spanish) + noise + (1|subj) + (1|item))
+
+tvt.lmm.proficiency <- lmer(data = TVT, formula = R2 ~ cognate  * ctr(english) * ctr(spanish) + noise + (1|subj) + (1|item))
 
 
 
 tvt.lmm <- lmer(data = TVT, formula = R3 ~ cognate  * ctr(english) * ctr(spanish) + noise + (1|subj) + (1|item))
 
 
-tvt.lmm <- lmer(data = TVT, formula = R2 ~ cognate * noise + (noise|subj) + (1|item))
+tvt.lmm <- lmer(data = TVT, formula = R2 ~ cognate + noise + (noise|subj) + (1|item))

@@ -1,0 +1,365 @@
+---
+title: "Trilingual reading: The effect of cognates, 'false friends', and language proficiency"
+subtitle: "Lectura trilingüe: El efecto de cognados, 'falsos amigos' y la competencia ligüística.\nLeitura Trilíngue: O efeito de cognatos, 'falsos amigos' e a competência lingüística."
+author: "Bernhard Angele¹, Pâmela Freitas Pereira Toassi², Timothy J. Slattery¹ and Elisangela Nogueira Teixeira²"
+institute: ¹Bournemouth University, ²Federal University of Ceará
+date: ECEM 2019, Thursday, August 22 2019
+
+header-includes:
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage{threeparttablex}
+- \usepackage[normalem]{ulem}
+- \usepackage{makecell}
+- \usepackage{xcolor} 
+
+output: 
+  binb::metropolis:
+    incremental: true
+    fig_width: 8
+    fig_height: 5
+    fig_crop: FALSE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen = 0, digits = 2) 
+#options(tinytex.verbose = TRUE)
+
+rm(list = ls())
+
+
+library(tidyverse)
+library(ggpirate)
+library(lme4)
+library(lmerTest)
+library(effects)
+library(yarrr)
+library(beanplot)
+library(MASS)
+library(knitr)
+library(papaja)
+library(kableExtra)
+
+
+source("../Write sentences/corpus/bnc_functions.R")
+
+
+
+# modified from papaja
+prettify_terms <- function(x, standardized = FALSE, centred = TRUE) {
+  if(standardized) x <- gsub("scale\\(", "", x)       # Remove scale()
+  if(centred) x <- gsub("ctr\\(", "", x)       # Remove ctr()
+  x <- gsub(pattern = "\\(|\\)|`|.+\\$", replacement = "", x = x)                 # Remove parentheses and backticks
+  x <- gsub('.+\\$|.+\\[\\["|"\\]\\]|.+\\[.*,\\s*"|"\\s*\\]', "", x) # Remove data.frame names
+  x <- gsub("\\_|\\.", " ", x)                        # Remove underscores
+  x <- gsub("([0-9])+", "", x) 
+      # in addition to everything the original prettify_terms does, this also removes any digits from the predictor names (introduced by contr.helmert or similar)
+  for (i in 1:length(x)) {
+    x2 <- unlist(strsplit(x[i], split = ":"))
+    x2 <- capitalize(x2)
+    x[i] <- paste(x2, collapse = " by ") #" $\\times$ ")
+  }
+  x
+}
+
+capitalize <- function(x) {
+  substring(x, first = 1, last = 1) <- toupper(substring(x, first = 1, last = 1))
+  x
+}
+
+
+
+prepare_lmerTest_summary_for_table <- function(lmm_summary){
+  # function to adapt lmerTest summary output into a nice table that can be printed using apa_table()
+  
+  # adapted from the comment by crsh on Github: https://github.com/crsh/papaja/issues/154#issuecommen*t*-509234855
+  
+   summary_for_table <- lmm_summary$coefficients %>% 
+    as.data.frame %>%
+    rename(
+      "b" = "Estimate"
+      , "SE" = "Std. Error"
+      , "df" = "df"
+      , "t" = "t value"
+      , "p" = "Pr(>|t|)"
+    ) %>%
+    mutate(
+      Effect = prettify_terms(rownames(.))) %>%
+      # in addition to everything prettify_terms does, this also removes any digits from the predictor names (introduced by contr.helmert or similar)
+
+    
+    printnum(
+      digits = c(2, 2, 2, 2, 3, 0)
+      , gt1 = c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE)
+      , zero = c(TRUE, TRUE, TRUE, TRUE, FALSE, FALSE)
+    ) %>%
+    dplyr::select(Effect, "b", "SE", "t", "df", "p")
+  return(summary_for_table)
+}
+
+
+ctr <- function(x) scale(x, scale = FALSE)
+
+stim <- read_tsv("stimuli.tsv")
+stim$item <- 1:nrow(stim)
+
+cognate_properties <- read_csv("cognates_complete.csv") %>% mutate(Related = tolower(Is_Cognate_EN_PT), `False friend` = tolower(Is_False_Cognate_EN_PT) == "yes")
+
+vocab <- read_csv("vocabulary_tests_English_Spanish.csv")
+  
+prepare_data_frame <-  function(ixs){
+  ixs_new <- ixs %>% left_join(stim, by = "item") %>%
+    mutate(word = case_when(cond == 1 | cond == 3 ~ `Target word`,  
+                            cond == 2 | cond == 4 ~ `Filler word`)) %>% # make  a column that gives the word in the target position no matter which condition we're in
+    left_join(cognate_properties, by = c("word" = "English")) %>%
+    left_join(vocab, by = "subj") %>%
+    left_join(bnc_aggregate[bnc_aggregate$word %in% .$word,], by = "word", suffix = c("",".BNC")) %>%
+    mutate(noise = factor(case_when(
+      cond > 2 ~ "Visual noise",
+      cond <= 2 ~ "No visual noise"), levels = c("No visual noise", "Visual noise"))
+    ) %>%
+    mutate(condition = factor(case_when(
+      !`False Cognate` & (cond == 1 | cond == 3) ~ "Cognate",
+      `False Cognate` & (cond == 1 | cond == 3) ~ "False friend",
+      !`False Cognate` & (cond == 2 | cond == 4) ~ "Cognate control",
+      `False Cognate` & (cond == 2 | cond == 4) ~ "False friend control"),
+        levels = c("Cognate","False friend","Cognate control", "False friend control"))) %>%
+    group_by(subj, condition, noise) %>% mutate(filter_subj = (R2 > mean(R2, na.rm = TRUE) - 2*sd(R2, na.rm = TRUE)) & (R2 < mean(R2, na.rm = TRUE) + 2*sd(R2, na.rm = TRUE))) %>% 
+    group_by(item, condition, noise) %>% mutate(filter_item = (R2 > mean(R2, na.rm = TRUE) - 2*sd(R2, na.rm = TRUE)) & (R2 < mean(R2, na.rm = TRUE) + 2*sd(R2, na.rm = TRUE)))
+
+  my_contrasts <- cbind(Cognate_vs_Control = c(-1,0,1,0), Control_vs_False_Friend_Control = c(0,0,1,-1),
+                          True_Cognate_vs_False_Friend = c(-.5,.5,.5,-.5))
+  contrasts(ixs_new$condition) <- zapsmall(t(ginv(my_contrasts)))
+  colnames(contrasts(ixs_new$condition)) <- colnames(my_contrasts)
+  contrasts(ixs_new$noise) <- contr.helmert
+
+
+  return(ixs_new)
+}
+
+FFD <- read_csv("./IXS/COGFFD.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+paste0("FFD: Excluded ", sum(!FFD$filter_subj | !FFD$filter_item, na.rm = TRUE)/nrow(FFD) * 100, "%.") %>% cat
+
+FFD <- FFD%>% filter(filter_subj & filter_item)
+
+GD <- read_csv("./IXS/COGGD.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+paste0("GD: Excluded ", sum(!GD$filter_subj | !GD$filter_item, na.rm = TRUE)/nrow(GD) * 100, "%.") %>% cat
+
+GD <-  GD %>% filter(filter_subj & filter_item)
+
+
+TVT <- read_csv("./IXS/COGTVT.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+paste0("TVT: Excluded ", sum(!TVT$filter_subj | !TVT$filter_item, na.rm = TRUE)/nrow(TVT) * 100, "%.") %>% cat
+
+TVT <- TVT %>% filter(filter_subj & filter_item)
+
+#GOP <- read_csv("./IXS/COGGOP.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+
+
+```
+
+## Introduction
+
+- This study came about as a direct consequence of ECEM 2017
+- Collaboration funded by the Newton Fund through the Royal Society
+- Question: How do bilinguals represent the words they know in all their languages?
+  - One possibility: Two separate lexicons; bilinguals (mostly) access meaning by accessing their L1 (Revised Hierarchical Model, Kroll & Stewart, 1994)
+  - Alternative: Lexicons are not separate. Bilinguals can activate all their lexical representations at any time. Task demands determine which words are responded to (BIA+, Dijkstra and van Heuven, 2002)
+
+## Past results
+
+- From behavioural studies: 
+  - not much evidence for separate lexicons and selective access 
+    - Cognate facilitation effects: e.g. for EN/ES speakers: "error" processed faster than "mistake"
+    - False friends cause interference: e.g. "sensible" vs. "sensitive"
+  - more direct connections between L2 words and meaning than there should be according to RHM
+
+## Past eye movement results
+- Not very many eye movement results:
+  - Libben & Titone (2009): Cognates facilitate processing and interlingual homographs (false friends) interfere with processing in both early and late L2 reading measures
+  - Cognates processed faster in L2 reading (Cop, Dirix, Van Assche, Drieghe, Duyck, 2017)
+  - Last ECEM: Toassi, Mota, & Teixera (2017): Effect of triple cognates (Portuguese/Italian/German). Trilinguals process triple cognates faster than double cognates 
+
+## Current study
+
+- Questions: 
+  - Is the (triple) cognate effect based on visual similarity?
+  - For triple cognates, does it help you if you are good at all three languages or is one sufficient?
+  - Is the cognate facilitat
+  
+## Method
+- Participants: 41 Portuguese-Spanish-English trilinguals in Ceará, Brazil reading 100 *English* (L3) sentences with embedded cognates/false friends or control words
+- Target words: 50 true cognates, 50 false friends
+- All false friends with English were true cognates between Spanish and Portuguese
+- Visual noise manipulation
+
+## Example cognates and controls
+
+```{r stimuli,results = "as.is", echo = FALSE}
+cognate_examples <- rbind(cognate_properties %>% filter(Related == "yes") %>% filter(!`False friend`) %>% head, cognate_properties %>% filter(Related == "yes") %>% filter(`False friend`) %>% head) %>% mutate(`False friend` = if_else(`False friend`, "yes", "no"))
+
+cognate_examples %>% dplyr::select(English, starts_with("Similar_word"), freq_per_million.x, `False friend`) %>% kable(booktabs = T,
+                                linesep = c('', '', '', '','', '\\addlinespace'), # longer space after 5 entries
+                                    col.names = c("English", "Portuguese", "Spanish", "English word frequency (per million)", "False friend")) %>% kable_styling(latex_options = c("scale_down"))
+```
+
+## Example stimuli
+
+```{r example_sentences, echo = FALSE}
+examples <- rbind(stim %>% filter(!`False Cognate`) %>% head, stim %>% filter(`False Cognate`) %>% head)
+
+examples %>%
+  dplyr::select(experimental_sentence,  filler_sentence, `False Cognate`) %>%
+  kable(booktabs = T,
+linesep = c('', '', '', '','', '\\addlinespace'), # longer space after 5 entries
+col.names = c("Cognate/False friend condition", "Control condition", "False friend?")) %>% kable_styling(latex_options = c("scale_down"), font_size = 24) %>% column_spec(c(1,2), width_min = "10em")
+```
+
+## Hypotheses 1
+- If lexical access occurs across languages:
+    - Target words that are visually familiar (cognates/false friends) should be processed faster than those that are unfamiliar (control words)
+- If processing is influenced by the degree of overlap (or lack thereof) word meaning:
+    - Target words that are false friends should be more difficult (slower) to process than target words that are true cognates 
+- If the presence visual noise leads to more top-down processing and reliance on memory:
+  - The effects of visual familiarity and of semantic overlap should be stronger in the presence of visual noise.
+    
+
+## Results: First fixation duration
+
+```{r FFD}
+noise.labs <- c("Visual noise", "No visual noise")
+names(noise.labs) <- c("noise", "no_noise")
+
+fc.labs <- c("True cognate", "False friend")
+names(fc.labs) <- c("FALSE", "TRUE")
+
+
+#pirateplot(R2 ~ control, data = FFD %>% filter(!(subj %in% c(16,34,40))))
+
+ggplot(FFD %>% filter(!(subj %in% c(16,34,40))), aes(y = R2, x = condition, colour = condition)) + facet_wrap(. ~ noise) + geom_pirate(points_params = list(shape = 19, alpha = 0.1), bars_params = list(alpha = .1)) + ylab("First fixation duration (in ms)")+ theme_apa() + theme(text = element_text(size=12),
+        axis.text.x = element_text(angle=15, hjust=1)) 
+
+#beanplot(R2 ~ control, data = FFD %>% filter(!(subj %in% c(16,34,40))), beanlinewd = .1, log="",col="bisque", method="jitter", ylim = c(0, 900))
+
+```
+
+## Results: Gaze duration
+
+```{r GD}
+
+ggplot(GD %>% filter(!(subj %in% c(16,34,40))), aes(y = R2, x = condition, colour = condition)) + facet_wrap(. ~ noise) + geom_pirate(points_params = list(shape = 19, alpha = 0.1), bars_params = list(alpha = .1)) + ylab("Gaze duration (in ms)")+ theme_apa()+ theme(text = element_text(size=12),
+        axis.text.x = element_text(angle=15, hjust=1)) 
+
+```
+
+## Results: Total viewing time
+
+```{r TVT}
+
+ggplot(TVT %>% filter(!(subj %in% c(16,34,40))), aes(y = R2, x = condition, colour = condition)) + facet_wrap(. ~ noise) + geom_pirate(points_params = list(shape = 19, alpha = 0.1), bars_params = list(alpha = .1)) + ylab("Total viewing time (in ms)")+ theme_apa() + theme(text = element_text(size=12),
+        axis.text.x = element_text(angle=15, hjust=1)) 
+
+```
+
+##  Effect of cognate condition and noise: First fixation duration (target word) 
+```{r ffdlmm_pf, results="asis"}
+FFD.lmm <- lmer(data = FFD %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~ condition*noise + (1|subj) + (1|item))
+summary(FFD.lmm) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
+```
+
+
+## Effect of cognate condition and noise: Gaze duration (target word)  
+```{r gdlmm_pf, results="as.is"}
+GD.lmm <- lmer(data = GD %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~ condition*noise + (1|subj) + (1|item))
+summary(GD.lmm) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
+```
+
+## Effect of cognate condition and noise: Total viewing time (target word) 
+```{r tvtlmm_pf, results="as.is"}
+TVT.lmm <- lmer(data = TVT %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~ condition*noise  + (1|subj) + (1|item))
+summary(TVT.lmm) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
+```
+
+## Hypotheses 1 revisited
+- Target words that are visually familiar (cognates/false friends) *are indeed* processed faster than those that are unfamiliar (control words) in both early and late measures
+- Semantic overlap effects (false friend interference) *only occur* in late measures (TVT)
+- Visual noise slows down processing in general, but it doesn't see to increase top-down reliance on lexical memory
+
+## Participant proficiency
+
+```{r proficiency}
+with(filter(vocab) %>% mutate(exclude = if_else(spanish < .15 & english < .15, "red","black")), qplot(english, spanish,  label = subj, colour = exclude) + scale_color_manual(values = c("black", "red")) + geom_text(nudge_y = .03)) + xlab("English proficiency (proportion correct)") + ylab("Spanish proficiency (proportion correct)") + theme(legend.position = "none") 
+```
+
+We excluded participants 16, 34, 40 because of very low English proficiency
+
+## Hypotheses 2
+- Participants with high English proficiency should process both the target words and the control words faster
+- Since all the target words are true cognates between Portuguese and Spanish, participants with high Spanish proficiency should process the target words faster (but not the control words)
+- Semantic overlap effects (false friend interference) should be stronger for participants who are highly proficient in Spanish
+
+##  Proficiency effects: First fixation duration (target word) 
+```{r ffdlmm, results="asis"}
+FFD.lmm.pf <- lmer(data = FFD %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~ condition * ctr(english) * ctr(spanish) * noise + (1|subj) + (1|item))
+summary(FFD.lmm.pf) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
+```
+
+
+## Effect of proficiency: Gaze duration (target word)  
+```{r gdlmm, results="as.is"}
+GD.lmm.pf <- lmer(data = GD %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~  condition * ctr(english) * ctr(spanish) * noise + (1|subj) + (1|item))
+summary(GD.lmm.pf) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
+```
+
+## Effect of proficiency: Total viewing time (target word) 
+```{r tvtlmm, results="as.is"}
+TVT.lmm.pf <- lmer(data = TVT %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~  condition * ctr(english) * ctr(spanish) * noise  + (1|subj) + (1|item))
+summary(TVT.lmm.pf) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
+```
+
+## Effect of English proficiency: Total viewing time
+```{r tvtlmm_plot, results="asis"}
+#ef <- effect("ctr(english)", FFD.lmm.pf)
+
+ef <- Effect(c("english", "condition"), TVT.lmm.pf)
+plot(ef, type = "rescale", axes=list(y=list(transform=exp, lab="Total viewing time")), lines=list(multiline=TRUE), confint=list(style="auto"))
+```
+
+## Hypotheses 2 revisited
+
+- Readers who are highly proficient in English *indeed show* much faster processin overall
+- *However,* highly proficient English readers are (relatively) show a much larger difference between true cognates and false friends in TVT than English readers with low proficiency
+- *No effect* of Spanish proficiency (in general or on false friends)
+
+## Conclusions
+
+- Trilinguals' performance when reading triple cognates seems to be mostly influenced by their proficiency in the language they are reading in, not their other non-native language.
+- In early processing and for low proficiency readers, visual familiarity (across languages) seems to be most important
+- For highly proficient readers, the semantic overlap between the visually familiar words becomes much more important in later processing
+- Visual noise does not seem to affect cognate facilitation or false friend interference.
+
+## Open questions
+
+- Knowing Spanish does not seem to add much in terms of cognate facilitation with English when you already know Portuguese
+  - Is this true for other language combinations? For example, would an English native speaker benefit more from knowing Spanish when reading in Portuguese?
+- False friends may cause more trouble in language production than in comprehension. Will knowing an additional language help or hurt you in production?
+- Are trilinguals better people?
+
+## Thank you very much.
+
+- Muchas gracias.
+- Muito obrigado.
+- Questions? Preguntas? Perguntas?
