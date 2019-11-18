@@ -22,14 +22,15 @@ header-includes:
 - \usepackage{xcolor} 
 
 output: 
-  binb::metropolis:
+  beamer_presentation:
     incremental: true
     fig_width: 8
     fig_height: 5
     fig_crop: FALSE
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, cache=FALSE}
+options(tinytex.verbose = TRUE)
 knitr::opts_chunk$set(echo = FALSE)
 options(scipen = 0, digits = 2) 
 #options(tinytex.verbose = TRUE)
@@ -228,7 +229,7 @@ linesep = c('', '', '', '','', '\\addlinespace'), # longer space after 5 entries
 col.names = c("Cognate/False friend condition", "Control condition", "False friend?")) %>% kable_styling(latex_options = c("scale_down"), font_size = 24) %>% column_spec(c(1,2), width_min = "10em")
 ```
 
-## Hypotheses 1
+## Hypotheses
 - If lexical access occurs across languages:
     - Target words that are visually familiar (cognates/false friends) should be processed faster than those that are unfamiliar (control words)
 - If processing is influenced by the degree of overlap (or lack thereof) word meaning:
@@ -275,25 +276,25 @@ ggplot(TVT %>% filter(!(subj %in% c(16,34,40))), aes(y = R2, x = condition, colo
 ```
 
 ##  Effect of cognate condition and noise: First fixation duration (target word) 
-```{r ffdlmm_pf, results="asis"}
+```{r ffdlmm_pf, results="asis", cache=TRUE}
 FFD.lmm <- lmer(data = FFD %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~ condition*noise + (1|subj) + (1|item))
 summary(FFD.lmm) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
 ```
 
 
 ## Effect of cognate condition and noise: Gaze duration (target word)  
-```{r gdlmm_pf, results="as.is"}
+```{r gdlmm_pf, results="as.is", cache=TRUE}
 GD.lmm <- lmer(data = GD %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~ condition*noise + (1|subj) + (1|item))
 summary(GD.lmm) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
 ```
 
 ## Effect of cognate condition and noise: Total viewing time (target word) 
-```{r tvtlmm_pf, results="as.is"}
+```{r tvtlmm_pf, results="as.is", cache=TRUE}
 TVT.lmm <- lmer(data = TVT %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~ condition*noise  + (1|subj) + (1|item))
 summary(TVT.lmm) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
 ```
 
-## Hypotheses 1 revisited
+## Hypotheses revisited: Part 1
 - Target words that are visually familiar (cognates/false friends) *are indeed* processed faster than those that are unfamiliar (control words) in both early and late measures
 - Semantic overlap effects (false friend interference) *only occur* in late measures (TVT)
 - Visual noise slows down processing in general, but it doesn't see to increase top-down reliance on lexical memory
@@ -306,26 +307,26 @@ with(filter(vocab) %>% mutate(exclude = if_else(spanish < .15 & english < .15, "
 
 We excluded participants 16, 34, 40 because of very low English proficiency
 
-## Hypotheses 2
+## Hypotheses revisited: Part 2
 - Participants with high English proficiency should process both the target words and the control words faster
 - Since all the target words are true cognates between Portuguese and Spanish, participants with high Spanish proficiency should process the target words faster (but not the control words)
 - Semantic overlap effects (false friend interference) should be stronger for participants who are highly proficient in Spanish
 
 ##  Proficiency effects: First fixation duration (target word) 
-```{r ffdlmm, results="asis"}
+```{r ffdlmm, results="asis", cache=TRUE}
 FFD.lmm.pf <- lmer(data = FFD %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~ condition * ctr(english) * ctr(spanish) * noise + (1|subj) + (1|item))
 summary(FFD.lmm.pf) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
 ```
 
 
 ## Effect of proficiency: Gaze duration (target word)  
-```{r gdlmm, results="as.is"}
+```{r gdlmm, results="as.is", cache=TRUE}
 GD.lmm.pf <- lmer(data = GD %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~  condition * ctr(english) * ctr(spanish) * noise + (1|subj) + (1|item))
 summary(GD.lmm.pf) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
 ```
 
 ## Effect of proficiency: Total viewing time (target word) 
-```{r tvtlmm, results="as.is"}
+```{r tvtlmm, results="as.is", cache=TRUE}
 TVT.lmm.pf <- lmer(data = TVT %>% filter(!(subj %in% c(16,34,40))), formula = log(R2) ~  condition * ctr(english) * ctr(spanish) * noise  + (1|subj) + (1|item))
 summary(TVT.lmm.pf) %>% prepare_lmerTest_summary_for_table() %>% kable(booktabs = TRUE, align = "r") %>% kable_styling(latex_options = c("scale_down")) 
 ```
@@ -338,10 +339,10 @@ ef <- Effect(c("english", "condition"), TVT.lmm.pf)
 plot(ef, type = "rescale", axes=list(y=list(transform=exp, lab="Total viewing time")), lines=list(multiline=TRUE), confint=list(style="auto"))
 ```
 
-## Hypotheses 2 revisited
+## Hypotheses revisited: Part 3
 
-- Readers who are highly proficient in English *indeed show* much faster processin overall
-- *However,* highly proficient English readers are (relatively) show a much larger difference between true cognates and false friends in TVT than English readers with low proficiency
+- Readers who are highly proficient in English *indeed show* much faster processing overall
+- *However,* highly proficient English readers show a much larger difference between true cognates and false friends in TVT than English readers with low proficiency
 - *No effect* of Spanish proficiency (in general or on false friends)
 
 ## Conclusions
