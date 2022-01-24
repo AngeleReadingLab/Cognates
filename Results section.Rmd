@@ -1,0 +1,342 @@
+---
+title             : "The title"
+shorttitle        : "Title"
+
+author: 
+  - name          : "First Author"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Postal address"
+    email         : "my@email.com"
+    role:         # Contributorship roles (e.g., CRediT, https://casrai.org/credit/)
+      - Conceptualization
+      - Writing - Original Draft Preparation
+      - Writing - Review & Editing
+  - name          : "Ernst-August Doelle"
+    affiliation   : "1,2"
+    role:
+      - Writing - Review & Editing
+
+affiliation:
+  - id            : "1"
+    institution   : "Wilhelm-Wundt-University"
+  - id            : "2"
+    institution   : "Konstanz Business School"
+
+authornote: |
+  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+
+  Enter author note here.
+
+abstract: |
+  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
+  
+  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
+  
+  One sentence clearly stating the **general problem** being addressed by  this particular study.
+  
+  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
+  
+  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
+  
+  One or two sentences to put the results into a more **general context**.
+  
+  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "keywords"
+wordcount         : "X"
+
+bibliography      : ["r-references.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library(MASS)
+library(tidyverse)
+library(brms)
+library("papaja")
+r_refs("r-references.bib")
+
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+
+
+# Methods
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+
+```{r load_data}
+
+
+
+source("./Write sentences/corpus/bnc_functions.R")
+
+
+ctr <- function(x)
+  scale(x, scale = FALSE)
+
+stim <- read_tsv("stimuli.tsv")
+stim$item <- 1:nrow(stim)
+
+stim <-
+  stim %>% mutate(tar_bnc = find_bnc_freq(`Target word`),
+                  fill_bnc = find_bnc_freq(`Filler word`))
+
+mean(as.numeric(stim$tar_bnc), na.rm = TRUE)
+
+mean(as.numeric(stim$fill_bnc), na.rm = TRUE)
+
+sd(as.numeric(stim$fill_bnc) - as.numeric(stim$tar_bnc), na.rm = TRUE)
+
+cognate_properties <- read_csv("cognates_complete.csv")
+
+vocab <- read_csv("vocabulary_tests_English_Spanish.csv")
+
+prepare_data_frame <-  function(ixs) {
+  ixs_new <- ixs %>% left_join(stim, by = "item") %>%
+    mutate(word = case_when(
+      cond == 1 | cond == 3 ~ `Target word`,
+      cond == 2 |
+        cond == 4 ~ `Filler word`
+    )) %>% # make  a column that gives the word in the target position no matter which condition we're in
+    left_join(cognate_properties, by = c("word" = "English")) %>%
+    left_join(vocab, by = "subj") %>%
+    left_join(bnc_aggregate[bnc_aggregate$word %in% .$word, ],
+              by = "word",
+              suffix = c("", ".BNC")) %>%
+    mutate(noise = factor(
+      case_when(cond > 2 ~ "noise",
+                cond <= 2 ~ "no_noise"),
+      levels = c("no_noise", "noise")
+    )) %>%
+    mutate(
+      condition = factor(
+        case_when(
+          !`False Cognate` & (cond == 1 | cond == 3) ~ "cognate",
+          `False Cognate` & (cond == 1 | cond == 3) ~ "false_cognate",!`False Cognate` &
+            (cond == 2 | cond == 4) ~ "cognate_control",
+          `False Cognate` &
+            (cond == 2 | cond == 4) ~ "false_cognate_control"
+        ),
+        levels = c(
+          "cognate",
+          "false_cognate",
+          "cognate_control",
+          "false_cognate_control"
+        )
+      ),
+      exp_vs_control = factor(case_when((cond == 1 |
+                                           cond == 3) ~ "exp",
+                                        (cond == 2 |
+                                           cond == 4) ~ "control"
+      ),
+      levels = c("exp", "control")),
+      word_pair = factor(
+        ifelse(`False Cognate`, "false_and_control", "cognate_and_control"),
+        levels = c("cognate_and_control", "false_and_control")
+      )
+    )
+  
+  my_contrasts <-
+    cbind(
+      cognate_vs_false_cognate = c(-1, 1, 0, 0),
+      cognate_vs_control = c(-1, 0, 1, 0),
+      false_cognate_vs_fc_control = c(0, -1, 0, 1)
+    )
+  contrasts(ixs_new$condition) <- zapsmall(t(ginv(my_contrasts)))
+  colnames(contrasts(ixs_new$condition)) <- colnames(my_contrasts)
+  contrasts(ixs_new$noise) <- contr.sum
+  contrasts(ixs_new$exp_vs_control) <- contr.sum
+  contrasts(ixs_new$word_pair) <- contr.sum
+  
+  
+  return(ixs_new)
+}
+
+FFD <-
+  read_csv("./IXS/COGFFD.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+GD <-
+  read_csv("./IXS/COGGD.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+TVT <-
+  read_csv("./IXS/COGTVT.IXS") %>% filter(!is.na(R1)) %>% prepare_data_frame()
+
+
+```
+
+## Participants
+
+## Material
+
+## Procedure
+
+## Data analysis
+We used `r cite_r("r-references.bib")` for all our analyses.
+
+We used the UMass Eyetracking software suite to calculate first fixation durations (the duration of the first fixation on a region regardless of whether it was fixated again subsequently, FFD), gaze durations (the sum of all first fixations and subsequent refixations -- if any -- on a region before leaving it, GD) and total viewing time (the sum of all fixations on a region, TVT) for the target region (the embedded cognate/false friend or control word). Fixations under 80 ms and over 800 ms were excluded (X% of fixations), as were any gaze durations over X ms and total viewing times over 1200 ms (?). We then analyzed the data by fitting Bayesian linear mixed models using the *brms* package (Buerkner, 2018) in R (R Core Team, 2021). We included three discrete predictors referring to the presentation condition. First, we included a predictor indicating whether the target word was a cognate (or the corresponding control) or a false friend (or the corresponding control). We will refer to this predictor as *word pair* and used contrasts as follows: if the target word was a false friend or the corresponding control, this was coded as -1; if the target word was a cognate or the corresponding control, this was coded as 1. The second predictor indicated whether the target word was the experimental item (cognate or false friend) or the corresponding control word. We will refer to this predictor as *experimental vs. control* and it was coded as follows: when the target word was a cognate or false friend, the contrast was coded as -1; when the target word was a control word, it was coded as 1. Finally, we included a predictor to represent the visual noise condition. This predictor was coded as -1 for the condition where visual noise was present and 1 for the condition where visual noise was absent. We also included each participant's English and Spanish proficiency as a continuous predictor. This was operationalized as the proportion of correct answers given on the proficiency tests and ranged from 0 to 1. To account for differences in word frequency between the stimuli, we included word frequency (transformed as 1/freq per million) for each target word as an additional continuous predictor. All continuous predictors were centered. We used the maximal random effect structure possible, with random intercepts and slopes for noise and experimental vs. control for both participants and items. For participants, we also included random slopes for word pair and word frequency. For items, we also included random slopes for the effect of English and Spanish proficiency.
+
+We used the ex-Gaussian distribution to model fixation times, with both the mean of the Gaussian component $\mu$ and the scale parameter of the exponential component $\beta$ (equaling the inverse of the rate parameter $\lambda$) being allowed to vary as a function of the predictors. We used the default priors suggested by *brms* except for the coefficients for the fixed effects, for which we applied weakly informative priors of $\beta \sim N(0,100)$ in order to rule out improbably large effect sizes. Due to the way the proficiency predictors are scaled, we used priors of $\beta \sim N(0,1000)$. Each model was fitted using four chains with 10,000 iterations each with 2,000 warmup iterations. We consider an effect as credible if the 95% Credible Interval (CrI) estimated from the posterior distribution does not contain zero.
+
+# Results
+
+We excluded three of the participants from the analysis since they had very low English and Spanish proficiency scores ($<.2$).
+Descriptive statistics for first fixation duration (FFD), gaze duration (GD), and total viewing time (TVT) in the experimental conditions are reported in Tables \@ref(tab:descriptives-ffd-table), \@ref(tab:descriptives-gd-table), and \@ref(tab:descriptives-tvt-table).
+
+(ref:descriptives-ffd-table-caption) Mean, Median, Standard Deviation (SD), range of first fixation duration (FFD) (in ms) for each condition.
+
+```{r descriptives-ffd-table, as.is = TRUE,echo=FALSE, warning=FALSE, message=FALSE}
+# calculate values separately for the measures
+
+levels(FFD$condition) <- c("Cognate", "False Cognate", "Control (Cognate)", "Control (False Cognate)")
+
+
+#exp1 <- read_csv("Exp 1 data.csv")
+
+
+FFD_table <- FFD %>%
+  filter(R2 > 80 & R2 <= 800) %>%
+  group_by(noise, condition) %>%
+  summarize(
+    Mean = mean(R2)
+    , Median = median(R2)
+    , SD = sd(R2)
+    , Min = min(R2)
+    , Max = max(R2)
+  )
+
+exp1_descriptives_corr <- exp1_data_to_include %>%
+  filter(rt > 250 & rt <= 1800) %>%
+  group_by(StimulusType, PrimeDuration, Relatedness) %>%
+  summarize(
+    Accuracy = mean(corr)
+  )
+
+exp1_descriptives_rt[, -1] <- printnum(exp1_descriptives_rt[, -1], digits = 0)
+
+exp1_descriptives_corr[, -1] <- printnum(exp1_descriptives_corr[, -1], digits = 2)
+
+colnames(exp1_descriptives_rt)[1:2] <- c("Stimulus Type", "Prime Duration")
+
+exp1_descriptives_rt$Accuracy <- exp1_descriptives_corr$Accuracy
+
+apa_table(
+  exp1_descriptives_rt
+  , caption = "(ref:exp1-descriptives-rt-table-caption)"
+  , escape = TRUE
+)  
+```
+
+## First fixation duration
+
+Table \@ref(tab:ffd-blmm-table) shows the mean, standard error, lower and upper bounds of the 95% CrI of the estimate of each fixed effect in the RT model, as well as the $\hat{R}$ for each estimate, which indicate that the model was fitted successfully as they are all close to 1.
+
+```{r ffd-models, echo=FALSE, as.is = TRUE, warning=FALSE, message=FALSE}
+
+# model name is blmm_exp1_rt_dist
+
+# adapted from a paper by Nalborczyk et al. (2019) -- https://osf.io/eancg/
+
+blmm_summary_ffd <- summary(blmm_ffd_dist)
+
+```
+In first fixation duration (FFD), we observed that, in terms of the effect of word pair, there was no credible difference in the mean of the Gaussian component $\mu$ was lower for cognates and their control words compared to false friends and their control words (*b* = `r blmm_summary_ffd$fixed["word_pair1","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["word_pair1","l-95% CI"]`, `r blmm_summary_ffd$fixed["word_pair1","u-95% CI"]`]). The mean of the Gaussian component $\mu$ was lower for the experimental stimuli compared to the control words (*b* = `r blmm_summary_ffd$fixed["exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["exp_vs_control1","l-95% CI"]`, `r blmm_summary_ffd$fixed["exp_vs_control1","u-95% CI"]`]), which shows that there was a benefit to seeing words that were orthographically similar to words known from participants' L1 compared to those that were not orthographically related. However, the interaction term between word pair and experiment vs. control (*b* = `r blmm_summary_ffd$fixed["word_pair1:exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["word_pair1:exp_vs_control1","l-95% CI"]`, `r blmm_summary_ffd$fixed["word_pair1:exp_vs_control1","u-95% CI"]`]) indicates that, in terms of $\mu$, there was no credible difference between the benefit gained from false friends compared to control words and the benefit gained from cognates compared to control words, that is, there was no cognate effect. This interaction was also not modulated by the visual noise condition (*b* = `r blmm_summary_ffd$fixed["word_pair1:exp_vs_control1:noise1","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["word_pair1:exp_vs_control1:noise1","l-95% CI"]`, `r blmm_summary_ffd$fixed["word_pair1:exp_vs_control1:noise1","u-95% CI"]`]), even though there was a strong main effect of visual noise (*b* = `r blmm_summary_ffd$fixed["noise1","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["noise1","l-95% CI"]`, `r blmm_summary_ffd$fixed["noise1","u-95% CI"]`]). None of the other two-way interactions were credible, either. Regarding the effect of proficiency on $\mu$, there was a strong effect of English proficiency (*b* = `r blmm_summary_ffd$fixed["ctrenglish","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["ctrenglish","l-95% CI"]`, `r blmm_summary_ffd$fixed["ctrenglish","u-95% CI"]`]) and no credible effect of Spanish proficiency (*b* = `r blmm_summary_ffd$fixed["ctrspanish","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["ctrspanish","l-95% CI"]`, `r blmm_summary_ffd$fixed["ctrspanish","u-95% CI"]`]). There also was no credible effect of word frequency (*b* = `r blmm_summary_ffd$fixed["ctr1Dfreq_per_million","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["ctr1Dfreq_per_million","l-95% CI"]`, `r blmm_summary_ffd$fixed["ctr1Dfreq_per_million","u-95% CI"]`]), indicating that, at least at this early stage, frequency differences between the experimental stimuli did not seem to influence FFD.
+
+The shape parameter of the exponential component $\beta$ was slightly affected by the experiment vs. control predictor, (*b* = `r blmm_summary_ffd$fixed["beta_exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["beta_exp_vs_control1","l-95% CI"]`, `r blmm_summary_ffd$fixed["beta_exp_vs_control1","u-95% CI"]`]), indicating that the controls that were not orthographically familiar from the L1 were associated with a slightly longer right tail of the FFD distribution than the familiar cognates and false friends. The same was true for the visual noise condition, which was associated with a longer right tail of the FFD distribution than the condition without visual noise (*b* = `r blmm_summary_ffd$fixed["beta_noise1","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["beta_noise1","l-95% CI"]`, `r blmm_summary_ffd$fixed["beta_noise1","u-95% CI"]`]). Similarly, the lower the English proficiency of the participant, the longer the right tail of the FFD distribution (*b* = `r blmm_summary_ffd$fixed["beta_ctrenglish","Estimate"]`, 95% CrI [`r blmm_summary_ffd$fixed["beta_ctrenglish","l-95% CI"]`, `r blmm_summary_ffd$fixed["beta_ctrenglish","u-95% CI"]`]). No other predictors showed a credible effect on the $\beta$ parameter of the ex-Gaussian distribution for FFD.
+
+(ref:blmm-table-ffd-caption) Posterior Mean, Standard Error (SE), 95% CrI and $\hat{R}$ for the fixed effects of the model fitted for first fixation duration.
+
+```{r blmm-table-ffd, echo=FALSE, as.is = TRUE, warning=FALSE, message=FALSE}
+
+blmm_ffd_for_print <- blmm_summary_ffd$fixed
+
+parameter_names <- c(
+    "Intercept ($\\mu$)",
+    "Intercept ($\\beta$)",
+    "Word Pair ($\\mu$)",
+    "Experiment vs. Control ($\\mu$)",
+    "Noise ($\\mu$)",
+    "English Proficiency ($\\mu$)",
+    "Spanish Proficiency ($\\mu$)",
+    "1/Frequency per million ($\\mu$)",
+    "Word Pair:Experiment vs. Control ($\\mu$)",
+    "Word Pair:Noise ($\\mu$)",
+    "Experiment vs. Control:Noise ($\\mu$)",
+    "Word Pair:Experiment vs. Control:Noise ($\\mu$)",
+    "Word Pair ($\\beta$)",
+    "Experiment vs. Control ($\\beta$)",
+    "Noise ($\\beta$)",
+    "English Proficiency ($\\beta$)",
+    "Spanish Proficiency ($\\beta$)",
+    "1/Frequency per million ($\\beta$)",
+    "Word Pair:Experiment vs. Control ($\\beta$)",
+    "Word Pair:Noise ($\\beta$)",
+    "Experiment vs. Control:Noise ($\\beta$)",
+    "Word Pair:Experiment vs. Control:Noise ($\\beta$)"
+    )
+
+blmm_ffd_fixed_for_print <- blmm_ffd_for_print %>% as_tibble %>% cbind(Parameter = parameter_names, .) %>% 
+  `colnames<-`(c("Parameter","mean","SE","lower bound","upper bound","$\\hat{R}$", "Bulk ESS","Tail ESS")) %>%
+  dplyr::select(-ends_with("ESS"))
+
+
+write.csv(blmm_ffd_fixed_for_print, file = "Table_1.csv", row.names = FALSE)
+
+apa_table(
+    blmm_ffd_fixed_for_print,
+    placement = "H",
+    align = c("c", "c", "c", "c", "c"),
+    caption = "(ref:exp1-blmm-table-caption)",
+    note = "$\\beta$ is the scale parameter (the inverse of the rate parameter $\\lambda$) of the ex-Gaussian distribution.",
+    small = TRUE,
+    digits = 3,
+    escape = FALSE
+    )
+
+```
+
+
+
+In gaze duration (GD), we observed that, in terms of the effect of word pair, the mean of the Gaussian component $\mu$ not credibly different for cognates and their control words compared to for false friends and their control words (*b* = `r blmm_summary_gd$fixed["word_pair1","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["word_pair1","l-95% CI"]`, `r blmm_summary_gd$fixed["word_pair1","u-95% CI"]`]). Like in FFD, the mean of the Gaussian component $\mu$ was lower for the experimental stimuli compared to the control words (*b* = `r blmm_summary_gd$fixed["exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["exp_vs_control1","l-95% CI"]`, `r blmm_summary_gd$fixed["exp_vs_control1","u-95% CI"]`]), which again shows that there was a benefit to seeing words that were orthographically similar to words known from participants' L1 compared to those that were not orthographically related. However, for $\mu$, the interaction term between word pair and experiment vs. control (*b* = `r blmm_summary_gd$fixed["word_pair1:exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["word_pair1:exp_vs_control1","l-95% CI"]`, `r blmm_summary_gd$fixed["word_pair1:exp_vs_control1","u-95% CI"]`]) again indicates there was no credible difference between the benefit gained from false friends compared to control words and the benefit gained from cognates compared to control words. Like in FFD, this interaction was not modulated by the visual noise condition (*b* = `r blmm_summary_gd$fixed["word_pair1:exp_vs_control1:noise1","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["word_pair1:exp_vs_control1:noise1","l-95% CI"]`, `r blmm_summary_gd$fixed["word_pair1:exp_vs_control1:noise1","u-95% CI"]`]), even though there was again a strong main effect of visual noise (*b* = `r blmm_summary_gd$fixed["noise1","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["noise1","l-95% CI"]`, `r blmm_summary_gd$fixed["noise1","u-95% CI"]`]). Just as in FFD, none of the other two-way interactions were credible. Regarding the effect of proficiency on $\mu$, as in FFD, there was a strong effect of English proficiency (*b* = `r blmm_summary_gd$fixed["ctrenglish","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["ctrenglish","l-95% CI"]`, `r blmm_summary_gd$fixed["ctrenglish","u-95% CI"]`]) and no credible effect of Spanish proficiency (*b* = `r blmm_summary_gd$fixed["ctrspanish","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["ctrspanish","l-95% CI"]`, `r blmm_summary_gd$fixed["ctrspanish","u-95% CI"]`]). Unlike in FFD, there was a strong effect of word frequency on $\mu$ of the GD distribution, (*b* = `r blmm_summary_gd$fixed["ctr1Dfreq_per_million","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["ctr1Dfreq_per_million","l-95% CI"]`, `r blmm_summary_gd$fixed["ctr1Dfreq_per_million","u-95% CI"]`]), indicating that refixations were affected by the word frequency differences between our stimuli.
+
+The shape parameter of the exponential component $\beta$ of the GD distribution was very slightly affected by the experiment vs. control predictor, (*b* = `r blmm_summary_gd$fixed["beta_exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["beta_exp_vs_control1","l-95% CI"]`, `r blmm_summary_gd$fixed["beta_exp_vs_control1","u-95% CI"]`]), again suggesting that the controls that were not orthographically familiar from the L1 were associated with a slightly longer right tail of the GD distribution than the familiar cognates and false friends. Unlike for the $\mu$ parameter, the interaction between word pair and experimental vs. control words showed a slight credible effect on the $\beta$ parameter of the GD distribution (*b* = `r blmm_summary_gd$fixed["word_pair1:exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["word_pair1:exp_vs_control1","l-95% CI"]`, `r blmm_summary_gd$fixed["word_pair1:exp_vs_control1","u-95% CI"]`]), suggesting that, in comparison to their control words, the GD distribution for false friends had a slightly longer tail than the GD distribution for cognates, that is, we observed a slight cognate advantage here. As in FFD, the visual noise condition was associated with a longer right tail of the GD distribution than the condition without visual noise (*b* = `r blmm_summary_gd$fixed["beta_noise1","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["beta_noise1","l-95% CI"]`, `r blmm_summary_gd$fixed["beta_noise1","u-95% CI"]`]). Also as in FFD, the lower the English proficiency of the participant, the longer the right tail of the GD distribution (*b* = `r blmm_summary_gd$fixed["beta_ctrenglish","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["beta_ctrenglish","l-95% CI"]`, `r blmm_summary_gd$fixed["beta_ctrenglish","u-95% CI"]`]). Unlike in FFD, the frequency effect we observed on the $\mu$ parameter of the GD distribution was also observed in the $\beta$ parameter (*b* = `r blmm_summary_gd$fixed["beta_ctr1Dfreq_per_million","Estimate"]`, 95% CrI [`r blmm_summary_gd$fixed["beta_ctr1Dfreq_per_million","l-95% CI"]`, `r blmm_summary_gd$fixed["beta_ctr1Dfreq_per_million","u-95% CI"]`]), showing that lower frequency target words also led to a longer right tail of the GD distribution.
+No other predictors showed a credible effect on the $\beta$ parameter of the ex-Gaussian distribution for GD.
+
+
+
+In total viewing time (TVT), we observed that, unlike in FFD and GD, there was a slight credible effect of word pair on the mean of the Gaussian component $\mu$, with lower TVTs for cognates and their control words compared to for false friends and their control words (*b* = `r blmm_summary_tvt$fixed["word_pair1","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["word_pair1","l-95% CI"]`, `r blmm_summary_tvt$fixed["word_pair1","u-95% CI"]`]). Of course, this difference could be related to differences between the properties of the stimuli pairs rather than a true cognate effect, which would be reflected in the interaction between word pair and experimental vs. control word. Like in FFD and GD, the mean of the Gaussian component $\mu$ was lower for the experimental stimuli compared to the control words (*b* = `r blmm_summary_tvt$fixed["exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["exp_vs_control1","l-95% CI"]`, `r blmm_summary_tvt$fixed["exp_vs_control1","u-95% CI"]`]), which once again shows that there was a benefit to seeing words that were orthographically similar to words known from participants' L1 compared to those that were not orthographically related. In TVT, unlike in FFD and GD, we observed a clear credible interaction between word pair and experiment vs. control (*b* = `r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1","l-95% CI"]`, `r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1","u-95% CI"]`]) in terms of $\mu$, suggesting that there was more benefit gained from cognates compared to control words than the benefit gained from false cognates compared to control words -- a clear cognate advantage. Once again, this interaction was not modulated by the visual noise condition (*b* = `r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1:noise1","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1:noise1","l-95% CI"]`, `r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1:noise1","u-95% CI"]`]), but there was again a strong main effect of visual noise (*b* = `r blmm_summary_tvt$fixed["noise1","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["noise1","l-95% CI"]`, `r blmm_summary_tvt$fixed["noise1","u-95% CI"]`]). Just as in FFD and GD, none of the other two-way interactions were credible. Regarding the effect of proficiency on $\mu$, as in FFD and GD, there was a strong effect of English proficiency (*b* = `r blmm_summary_tvt$fixed["ctrenglish","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["ctrenglish","l-95% CI"]`, `r blmm_summary_tvt$fixed["ctrenglish","u-95% CI"]`]) and no credible effect of Spanish proficiency (*b* = `r blmm_summary_tvt$fixed["ctrspanish","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["ctrspanish","l-95% CI"]`, `r blmm_summary_tvt$fixed["ctrspanish","u-95% CI"]`]). As in GD, there was again a strong effect of word frequency on $\mu$ of the TVT distribution, (*b* = `r blmm_summary_tvt$fixed["ctr1Dfreq_per_million","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["ctr1Dfreq_per_million","l-95% CI"]`, `r blmm_summary_tvt$fixed["ctr1Dfreq_per_million","u-95% CI"]`]), indicating TVTs were affected by the word frequency differences between our stimuli.
+
+The shape parameter of the exponential component $\beta$ of the TVT distribution was again very slightly affected by the experiment vs. control predictor, (*b* = `r blmm_summary_tvt$fixed["beta_exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["beta_exp_vs_control1","l-95% CI"]`, `r blmm_summary_tvt$fixed["beta_exp_vs_control1","u-95% CI"]`]), again suggesting that the controls that were not orthographically familiar from the L1 were associated with a slightly longer right tail of the TVT distribution than the familiar cognates and false friends. In TVT, we see the same slight interaction between word pair and experimental vs. control words on the $\beta$ parameter (*b* = `r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1","l-95% CI"]`, `r blmm_summary_tvt$fixed["word_pair1:exp_vs_control1","u-95% CI"]`]), suggesting that, in addition to the cognate advantage represented by the difference in $\mu$, we again observed a slight cognate advantage in terms of $\beta$. As in FFD and GD, the visual noise condition was associated with a longer right tail of the TVT distribution than the condition without visual noise (*b* = `r blmm_summary_tvt$fixed["beta_noise1","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["beta_noise1","l-95% CI"]`, `r blmm_summary_tvt$fixed["beta_noise1","u-95% CI"]`]). Also as in FFD and GD, the lower the English proficiency of the participant, the longer the right tail of the TVT distribution (*b* = `r blmm_summary_tvt$fixed["beta_ctrenglish","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["beta_ctrenglish","l-95% CI"]`, `r blmm_summary_tvt$fixed["beta_ctrenglish","u-95% CI"]`]). Like in GD, the frequency effect we observed on the $\mu$ parameter of the TVT distribution was also observed in the $\beta$ parameter (*b* = `r blmm_summary_tvt$fixed["beta_ctr1Dfreq_per_million","Estimate"]`, 95% CrI [`r blmm_summary_tvt$fixed["beta_ctr1Dfreq_per_million","l-95% CI"]`, `r blmm_summary_tvt$fixed["beta_ctr1Dfreq_per_million","u-95% CI"]`]), showing that lower frequency target words also led to a longer right tail of the TVT distribution.
+No other predictors showed a credible effect on the $\beta$ parameter of the ex-Gaussian distribution for TVT.
+
+# Discussion
+
+
+\newpage
+
+# References
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id="refs" custom-style="Bibliography"></div>
+\endgroup
