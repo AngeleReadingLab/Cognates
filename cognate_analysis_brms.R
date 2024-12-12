@@ -228,7 +228,7 @@ ggplot(data = FFD %>% filter(!(subj %in% c(16, 34, 40))),
 
 # BRMS models
 
-ncores = parallel::detectCores()
+ncores = 4 #parallel::detectCores()
 # Mean RTs in each condition
 
 # Check the priors that brm sets by default
@@ -249,8 +249,12 @@ prior_eye_movements <-
     set_prior("normal(0,100)", class = "b", coef = "noise1"),
     set_prior("normal(0,100)", class = "b", coef = "word_pair1"),
     set_prior("normal(0,100)", class = "b", coef = "word_pair1:exp_vs_control1"),
-    set_prior("normal(0,100)", class = "b", coef = "word_pair1:exp_vs_control1:noise1")
+    set_prior("normal(0,100)", class = "b", coef = "word_pair1:exp_vs_control1:noise1"),
+    set_prior("normal(0,100)", class = "b", dpar = "beta")
   )
+
+priors_beta <- c(set_prior("normal(0,100)", class = "b"),
+                 set_prior("normal(0,10)", class = "b", dpar = "beta"))
 
 # need to set inits to "0" since sampling from [-2, 2] (which "random" does") doesn't work
 # better inits may be possible
@@ -264,13 +268,14 @@ blmm_ffd_dist <-
     warmup = 2000,
     iter = 10000,
     chains = 4,
-    prior = prior_eye_movements,
+    prior = priors_beta,
     family = exgaussian(),
-    inits = "0",
-    control = list(adapt_delta = 0.9),
+    init = "0",
+    #control = list(adapt_delta = 0.9),
     cores = 4,
     backend = "cmdstanr",
-    threads = threading(4)
+    threads = threading(2),
+    silent = 0
   )
 
 save(blmm_ffd_dist, file = "blmm_ffd_dist3.RData")
@@ -287,10 +292,11 @@ blmm_gd_dist <-
     prior = prior_eye_movements,
     family = exgaussian(),
     inits = "0",
-    control = list(adapt_delta = 0.9),
+    #control = list(adapt_delta = 0.9),
     cores = 4,
     backend = "cmdstanr",
-    threads = threading(4)
+    threads = threading(4),
+    silent = 0
   )
 
 save(blmm_gd_dist, file = "blmm_gd_dist3.RData")
@@ -311,7 +317,8 @@ blmm_tvt_dist <-
     control = list(adapt_delta = 0.95, max_treedepth = 15),
     cores = 4,
     backend = "cmdstanr",
-    threads = threading(4)
+    threads = threading(4),
+    silent = 0
   )
 
 save(blmm_tvt_dist, file = "blmm_tvt_dist3.RData")
